@@ -1,0 +1,433 @@
+/* ============================================
+   ESTILOS RESPONSIVE - FLYGO
+   ============================================ */
+
+/* ========== BREAKPOINTS ========== */
+/* 
+   Mobile First Approach:
+   - Base: 0-639px (Mobile)
+   - SM: 640px+ (Tablet pequeña)
+   - MD: 768px+ (Tablet)
+   - LG: 1024px+ (Desktop)
+   - XL: 1280px+ (Desktop grande)
+   - 2XL: 1536px+ (Desktop extra grande)
+*/
+
+/* ========== TABLET PEQUEÑA (640px+) ========== */
+@media (max-width: 640px) {
+    /* Tipografía */
+    html {
+        font-size: 14px;
+    }
+    
+    h1 { font-size: var(--font-size-4xl); }
+    h2 { font-size: var(--font-size-3xl); }
+    h3 { font-size: var(--font-size-2xl); }
+    
+    /* Hero */
+    .hero-title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+    }
+    
+    .hero-decoration {
+        width: 300px;
+        height: 300px;
+    }
+    
+    /* Navegación */
+    .nav-container {
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--bg-secondary);
+        flex-direction: column;
+        padding: var(--spacing-2xl);
+        gap: var(--spacing-lg);
+        transition: left var(--transition-base);
+        z-index: var(--z-fixed);
+        border-right: var(--border-width-thin) solid var(--border-color-primary);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    .nav-search {
+        order: -1;
+        width: 100%;
+    }
+    
+    .search-input {
+        width: 100%;
+    }
+    
+    .search-input:focus {
+        width: 100%;
+    }
+    
+    .brand-name {
+        font-size: var(--font-size-xl);
+    }
+    
+    /* Botones */
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Secciones */
+    .destinations-section,
+    .hero-section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .section-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .section-subtitle {
+        font-size: var(--font-size-base);
+    }
+    
+    /* Grid de destinos */
+    .destinations-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        text-align: center;
+    }
+    
+    .footer-brand {
+        align-items: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    /* Container */
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+/* ========== TABLET (768px+) ========== */
+@media (min-width: 641px) and (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-5xl);
+    }
+    
+    .destinations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .nav-menu {
+        gap: var(--spacing-md);
+    }
+    
+    .search-input {
+        width: 200px;
+    }
+}
+
+/* ========== DESKTOP (1024px+) ========== */
+@media (min-width: 1024px) {
+    /* Efectos hover mejorados para desktop */
+    .destination-card:hover .card-image {
+        transform: scale(1.05);
+    }
+    
+    .card-image {
+        transition: transform var(--transition-base);
+    }
+    
+    /* Navegación con efectos */
+    .nav-menu {
+        gap: var(--spacing-xl);
+    }
+    
+    /* Hero más espacioso */
+    .hero-section {
+        min-height: 95vh;
+    }
+}
+
+/* ========== DESKTOP GRANDE (1280px+) ========== */
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .destinations-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-6xl);
+    }
+}
+
+/* ========== DESKTOP EXTRA GRANDE (1536px+) ========== */
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    html {
+        font-size: 18px;
+    }
+}
+
+/* ========== ORIENTACIÓN ========== */
+
+/* Landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 100vh;
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .hero-cta {
+        gap: var(--spacing-md);
+    }
+    
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-lg);
+    }
+    
+    .nav-menu {
+        height: calc(100vh - 60px);
+        padding: var(--spacing-lg);
+    }
+}
+
+/* ========== MODO OSCURO / CLARO ========== */
+
+/* Si el usuario prefiere modo claro */
+@media (prefers-color-scheme: light) {
+    [data-theme="auto"] {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f7fafc;
+        --bg-tertiary: #edf2f7;
+        --text-primary: #1a202c;
+        --text-secondary: #4a5568;
+        --text-tertiary: #718096;
+    }
+}
+
+/* ========== IMPRESIÓN ========== */
+@media print {
+    /* Ocultar elementos no necesarios */
+    .navbar,
+    .nav-toggle,
+    .hero-cta,
+    .footer,
+    .search-input,
+    .search-btn {
+        display: none !important;
+    }
+    
+    /* Ajustar colores para impresión */
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .hero-section,
+    .destinations-section {
+        background: white;
+    }
+    
+    /* Evitar saltos de página */
+    .destination-card,
+    .hero-content {
+        page-break-inside: avoid;
+    }
+    
+    /* Mostrar URLs de enlaces */
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* ========== ACCESIBILIDAD ========== */
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color-primary: rgba(255, 255, 255, 0.3);
+        --border-color-secondary: rgba(76, 201, 240, 0.5);
+    }
+    
+    .nav-link,
+    .btn,
+    .destination-card {
+        border-width: var(--border-width-medium);
+    }
+}
+
+/* Transparencia reducida */
+@media (prefers-reduced-transparency) {
+    .navbar,
+    .destination-card,
+    .search-input {
+        backdrop-filter: none;
+    }
+    
+    .navbar {
+        background-color: var(--bg-secondary);
+    }
+    
+    .destination-card {
+        background-color: var(--bg-tertiary);
+    }
+}
+
+/* ========== UTILIDADES RESPONSIVE ========== */
+
+/* Ocultar en móvil */
+@media (max-width: 640px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Ocultar en tablet */
+@media (min-width: 641px) and (max-width: 1023px) {
+    .hide-tablet {
+        display: none !important;
+    }
+}
+
+/* Ocultar en desktop */
+@media (min-width: 1024px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+/* Mostrar solo en móvil */
+@media (min-width: 641px) {
+    .show-mobile-only {
+        display: none !important;
+    }
+}
+
+/* Mostrar solo en tablet */
+.show-tablet-only {
+    display: none !important;
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+    .show-tablet-only {
+        display: block !important;
+    }
+}
+
+/* Mostrar solo en desktop */
+.show-desktop-only {
+    display: none !important;
+}
+
+@media (min-width: 1024px) {
+    .show-desktop-only {
+        display: block !important;
+    }
+}
+
+/* ========== AJUSTES ESPECÍFICOS PARA DISPOSITIVOS ========== */
+
+/* iPhone SE y dispositivos pequeños */
+@media (max-width: 375px) {
+    .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .logo {
+        width: 40px;
+    }
+    
+    .brand-name {
+        font-size: var(--font-size-lg);
+    }
+    
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* iPad y tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .nav-container {
+        padding: 0 var(--spacing-xl);
+    }
+    
+    .destinations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xl);
+    }
+}
+
+/* Pantallas ultra anchas */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+    
+    .hero-decoration {
+        width: 800px;
+        height: 800px;
+    }
+}

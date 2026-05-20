@@ -1,0 +1,16 @@
+{
+  "name": "FlyGo Agent",
+  "description": "A starter project agent for the FlyGo repository.",
+  "version": "0.1.0",
+  "author": "GitHub Copilot",
+  "capabilities": [
+    "analyze project structure",
+    "generate frontend snippets",
+    "suggest improvements",
+    "scaffold helpers"
+  ],
+  "usage": {
+    "run": "node agent.js",
+    "notes": "Replace the placeholder logic in agent.js with your preferred AI or automation backend."
+  }
+}
