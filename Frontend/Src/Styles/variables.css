@@ -1,0 +1,26 @@
+/* PALETA DE COLORES */
+
+:root {
+
+    /* fondos */
+    --fondo-principal: #0e1015;
+    --fondo-secundario: #0c0e13;
+    --fondo-claro: #f3f5f7;
+
+    /* textos */
+    --texto-principal: #f5f7fa;
+    --texto-secundario: #0a0f18;
+
+    /* colores principales */
+    --color-principal: #0a0f18;
+    --color-principal-oscuro: #3b82f6;
+
+    /* sombras */
+    --sombra-oscura:
+    0 10px 30px rgba(0,0,0,0.35);
+
+    /* bordes */
+    --borde-oscuro:
+    1px solid rgba(255,255,255,0.05);
+
+}

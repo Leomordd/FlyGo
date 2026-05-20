@@ -1,0 +1,117 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+    body {
+        background-color: var(--fondo-principal);
+        margin: 0;
+        padding: 0;
+        font-family: 'roboto', sans-serif;
+    }
+    nav {
+        background-color: var(--fondo-secundario);
+        border: 1px solid var(--borde-oscuro);
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        width: 100%;    
+        flex-direction: row;
+        justify-content: flex-start;
+        height: 10vh;
+    }
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    nav ul li a {
+        color: var(--texto-principal);
+        text-decoration: none;
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+        color: var(--color-principal);
+    }
+    
+    .logo {
+        width: 60px;
+        height: auto;
+    }
+input[type="text"] {
+    background: rgba(21, 25, 34, 0.9);
+    border: 1px solid rgba(76, 201, 240, 0.15);
+    color: var(--texto-principal);
+
+    padding: 10px 13px;
+    border-radius: 12px;
+
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+
+    outline: none;
+
+    transition:
+        border 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.2s ease,
+        background 0.3s ease;
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 4px 20px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+input[type="text"]::placeholder {
+    color: var(--texto-principal);
+}
+
+input[type="text"]:hover {
+    border-color: var(--color-principal-oscuro);
+}
+
+input[type="text"]:focus {
+    border-color: var(--color-principal);
+
+    box-shadow:
+        0 0 0 4px rgba(76, 201, 240, 0.12),
+        0 0 25px rgba(76, 201, 240, 0.15);
+
+    background: var(--fondo-secundario);
+
+    transform: translateY(-1px);
+}
+    .div1 {
+        background-color: var(--fondo-principal);
+        width: 100%;
+        height: 100vh;
+    }
+    .div2 {
+        background-color: var(--fondo-claro);
+        width: 100%;
+        height: 100vh;
+    }
+    .flygoh1 {
+        color: var(--texto-principal);
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        text-align: center;
+   
+    }
+  
+    p {
+        text-shadow: none;
+        color: var(--texto-secundario);
+        text-align: center;
+        font-size: 3.5em;
+
+    }
