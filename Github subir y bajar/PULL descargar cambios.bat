@@ -1,47 +1,49 @@
 @echo off
-title FlyGo Git Manager
+title FlyGo - Descargar Cambios
 color 0B
 
-echo ============================================
-echo              FLYGO GIT MANAGER
-echo ============================================
+:inicio
+cls
+
 echo.
-echo [1/4] Entrando al proyecto...
+echo  ===============================================
+echo                FLYGO UPDATE SYSTEM
+echo  ===============================================
+echo.
+echo         Este script va a:
+echo.
+echo          [✓] Entrar al proyecto
+echo          [✓] Descargar cambios de GitHub
+echo          [✓] Actualizar tu repositorio
+echo.
+echo  ===============================================
+echo.
+
+pause
+
+cls
+
+echo.
+echo  ===============================================
+echo             CONECTANDO CON GITHUB...
+echo  ===============================================
 echo.
 
 cd /d "C:\Users\El Loco Mike\Desktop\FlyGo\FlyGo"
 
-echo ============================================
-echo [2/4] Descargando cambios de GitHub...
-echo ============================================
+echo.
+echo  Descargando cambios...
 echo.
 
 git pull
 
 echo.
-echo ============================================
-echo [3/4] Escribi el mensaje del commit
-echo ============================================
+echo  ===============================================
+echo              ACTUALIZACION COMPLETADA
+echo  ===============================================
 echo.
 
-set /p commitmsg=Commit: 
-
-echo.
-echo ============================================
-echo [4/4] Subiendo cambios...
-echo ============================================
-echo.
-
-git add .
-
-git commit -m "%commitmsg%"
-
-git push
-
-echo.
-echo ============================================
-echo          TODO SUBIDO CORRECTAMENTE
-echo ============================================
+echo  Ya tenes la ultima version del proyecto.
 echo.
 
 pause
