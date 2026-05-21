@@ -10,7 +10,7 @@ echo [1/4] Entrando al proyecto...
 echo.
 
 :: Cambiamos a la carpeta y verificamos si existe
-cd /d "C:\Users\El Loco Mike\Desktop\FlyGo\FlyGo" || (echo Error: No se pudo acceder a la carpeta. & pause & exit)
+cd /d "C:\Users\El Loco Mike\Desktop\FlyGo\FlyGo"| (echo Error: No se pudo acceder a la carpeta. & pause & exit)
 
 echo ============================================
 echo [2/4] Descargando cambios de GitHub...
