@@ -206,15 +206,18 @@ function inicializarBotonesCTA() {
             console.log('CTA clicked:', buttonText);
             
             // Implementar acciones según el botón
-            if (buttonText.includes('Explorar')) {
+            if (buttonText.includes('Planes')) {
                 // Scroll a sección de destinos
-                const destinationsSection = document.getElementById('destinos');
+                const destinationsSection = document.getElementById('planes-populares');
                 if (destinationsSection) {
                     destinationsSection.scrollIntoView({ behavior: 'smooth' });
                 }
-            } else if (buttonText.includes('Ofertas')) {
+            } else if (buttonText.includes('Personalizado')) {
                 // Navegar a ofertas o mostrar modal
-                console.log('Mostrando ofertas...');
+                const destinationsSection = document.getElementById('plan-personalizado');
+                if (destinationsSection) {
+                    destinationsSection.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
     });

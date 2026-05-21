@@ -323,6 +323,121 @@ a:hover {
 }
 
 /* ========== SECCIÓN DE DESTINOS ========== */
+.seccion-personalizado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-4xl) 0;
+    background-color: var(--bg-secondary);
+    width: 100%;
+    height: 800px;
+    gap: 50px;
+}
+
+.titulo-inicio-plan {
+    text-align: center;
+    font-size: var(--font-size-4xl);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+
+.contenedor-personalizado {
+    display: flex;
+    padding: var(--spacing-2xl);
+    width: 95%;
+    height: 100%;
+    background: var(--bg-card);
+    border: var(--border-width-thin) solid var(--border-color-primary);
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    backdrop-filter: blur(var(--blur-md));
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contenedor-personalizado:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-color-accent);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+}
+
+.contenedor-personalizado1 h1 {
+    text-align: end;
+    display: flex;
+    width: 80%;
+    font-size: var(--font-size-3xl);
+}
+
+.contenedor-personalizado1 p {
+    width: 80%;
+    font-size: var(--font-size-base);
+}
+
+.contenedor-personalizado2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: start;
+    width: 100%;
+    height: 250px;
+    background: var(--bg-primary);
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    backdrop-filter: blur(var(--blur-md));
+    padding: var(--spacing-lg);
+    column-rule: 2px solid #ccc;
+}
+
+.contenedor-personalizado2-item h3 {
+    font-size: var(--font-size-xl);
+}
+
+.contenedor-personalizado2-item {
+    padding-right: 20px;
+    border-right: 2px solid #383942;
+    height: 150px
+}
+
+.contenedor-personalizado2-item2 h3 {
+    font-size: var(--font-size-xl);
+}
+
+.contenedor-personalizado3 {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    z-index: 100;
+}
+
+.contenedor-personalizado4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: start;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    padding: var(--spacing-lg);
+    column-rule: 2px solid #ccc;
+}
+
+.contenedor-personalizado4-item h3 {
+    font-size: var(--font-size-lg);
+}
+
+.contenedor-personalizado4-item {
+    height: 120px
+}
+
 .seccion-destinos {
     padding: var(--spacing-4xl) 0;
     background-color: var(--bg-secondary);
