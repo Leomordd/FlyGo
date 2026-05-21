@@ -27,23 +27,23 @@
 
 <body>
     <!-- Navegación Principal -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <img src="../Src/Assets/icon/logotipo (1).png" alt="FlyGo Logo" class="logo">
-                <span class="brand-name">FlyGo</span>
+    <nav class="barra-navegacion">
+        <div class="contenedor-navegacion">
+            <div class="marca-navegacion">
+                <img src="../Src/Assets/icon/logotipo (1).png" alt="Logotipo de FlyGo" class="logotipo">
+                <span class="nombre-marca">FlyGo</span>
             </div>
             
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#inicio" class="nav-link active">Inicio</a></li>
-                <li class="nav-item"><a href="#destinos" class="nav-link">Destinos</a></li>
-                <li class="nav-item"><a href="#ofertas" class="nav-link">Ofertas</a></li>
-                <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+            <ul class="menu-navegacion">
+                <li class="elemento-menu"><a href="#inicio" class="enlace-navegacion activo">Inicio</a></li>
+                <li class="elemento-menu"><a href="#destinos" class="enlace-navegacion">Destinos</a></li>
+                <li class="elemento-menu"><a href="#ofertas" class="enlace-navegacion">Ofertas</a></li>
+                <li class="elemento-menu"><a href="#contacto" class="enlace-navegacion">Contacto</a></li>
             </ul>
             
-            <div class="nav-search">
-                <input class="search-input" type="text" placeholder="Buscar destinos..." aria-label="Buscar destinos">
-                <button class="search-btn" aria-label="Buscar">
+            <div class="busqueda-navegacion">
+                <input class="entrada-busqueda" type="text" placeholder="Buscar destinos..." aria-label="Buscar destinos">
+                <button class="boton-busqueda" aria-label="Buscar">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"></circle>
                         <path d="m21 21-4.35-4.35"></path>
@@ -52,7 +52,7 @@
             </div>
             
             <!-- Botón hamburguesa para móvil -->
-            <button class="nav-toggle" aria-label="Abrir menú">
+            <button class="boton-hamburguesa" aria-label="Abrir menú">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -61,49 +61,49 @@
     </nav>
 
     <!-- Sección Hero -->
-    <section id="inicio" class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Descubre el Mundo con FlyGo</h1>
-            <p class="hero-subtitle">Encuentra los mejores destinos y ofertas para tu próxima aventura</p>
-            <div class="hero-cta">
-                <button class="btn btn-primary">Explorar Destinos</button>
-                <button class="btn btn-secondary">Ver Ofertas</button>
+    <section id="inicio" class="seccion-inicio">
+        <div class="contenido-inicio">
+            <h1 class="titulo-inicio">Descubre el Mundo con FlyGo</h1>
+            <p class="subtitulo-inicio">Encuentra los mejores destinos y ofertas para tu próxima aventura</p>
+            <div class="llamada-accion">
+                <button class="boton boton-primario">Explorar Destinos</button>
+                <button class="boton boton-secundario">Ver Ofertas</button>
             </div>
         </div>
-        <div class="hero-decoration"></div>
+        <div class="decoracion-inicio"></div>
     </section>
 
     <!-- Sección de Destinos Destacados -->
-    <section id="destinos" class="destinations-section">
-        <div class="container">
-            <h2 class="section-title">Destinos Populares</h2>
-            <p class="section-subtitle">Explora los lugares más increíbles del mundo</p>
+    <section id="destinos" class="seccion-destinos">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Destinos Populares</h2>
+            <p class="subtitulo-seccion">Explora los lugares más increíbles del mundo</p>
             
-            <div class="destinations-grid">
-                <article class="destination-card">
-                    <div class="card-image"></div>
-                    <div class="card-content">
+            <div class="cuadricula-destinos">
+                <article class="tarjeta-destino">
+                    <div class="imagen-tarjeta"></div>
+                    <div class="contenido-tarjeta">
                         <h3>París, Francia</h3>
                         <p>La ciudad del amor y la luz</p>
-                        <span class="price">Desde $899</span>
+                        <span class="precio">Desde $899</span>
                     </div>
                 </article>
                 
-                <article class="destination-card">
-                    <div class="card-image"></div>
-                    <div class="card-content">
+                <article class="tarjeta-destino">
+                    <div class="imagen-tarjeta"></div>
+                    <div class="contenido-tarjeta">
                         <h3>Tokio, Japón</h3>
                         <p>Tradición y modernidad</p>
-                        <span class="price">Desde $1,299</span>
+                        <span class="precio">Desde $1,299</span>
                     </div>
                 </article>
                 
-                <article class="destination-card">
-                    <div class="card-image"></div>
-                    <div class="card-content">
+                <article class="tarjeta-destino">
+                    <div class="imagen-tarjeta"></div>
+                    <div class="contenido-tarjeta">
                         <h3>Nueva York, USA</h3>
                         <p>La ciudad que nunca duerme</p>
-                        <span class="price">Desde $799</span>
+                        <span class="precio">Desde $799</span>
                     </div>
                 </article>
             </div>
@@ -111,14 +111,14 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="../Src/Assets/icon/logotipo (1).png" alt="FlyGo Logo" class="footer-logo">
+    <footer class="pie-pagina">
+        <div class="contenedor">
+            <div class="contenido-pie-pagina">
+                <div class="marca-pie-pagina">
+                    <img src="../Src/Assets/icon/logotipo (1).png" alt="Logotipo de FlyGo" class="logotipo-pie-pagina">
                     <p>Tu compañero de viajes perfecto</p>
                 </div>
-                <div class="footer-links">
+                <div class="enlaces-pie-pagina">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
@@ -127,16 +127,16 @@
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
+                <div class="social-pie-pagina">
                     <h4>Síguenos</h4>
-                    <div class="social-links">
+                    <div class="enlaces-sociales">
                         <a href="#" aria-label="Facebook">FB</a>
                         <a href="#" aria-label="Twitter">TW</a>
                         <a href="#" aria-label="Instagram">IG</a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="pie-inferior">
                 <p>&copy; 2026 FlyGo. Todos los derechos reservados.</p>
             </div>
         </div>

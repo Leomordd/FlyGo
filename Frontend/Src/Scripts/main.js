@@ -1,49 +1,49 @@
-/* ============================================
+﻿/* ============================================
    JAVASCRIPT PRINCIPAL - FLYGO
    ============================================ */
 
 // ========== VARIABLES GLOBALES ==========
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
-const searchInput = document.querySelector('.search-input');
+const botonHamburguesa = document.querySelector('.boton-hamburguesa');
+const menuNavegacion = document.querySelector('.menu-navegacion');
+const enlacesNavegacion = document.querySelectorAll('.enlace-navegacion');
+const entradaBusqueda = document.querySelector('.entrada-busqueda');
 
 // ========== NAVEGACIÓN MÓVIL ==========
 
 /**
- * Toggle del menú móvil
+ * Alternar menú móvil
  */
-function toggleMobileMenu() {
-    navToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+function alternarMenuMovil() {
+    botonHamburguesa.classList.toggle('activo');
+    menuNavegacion.classList.toggle('activo');
+    document.body.style.overflow = menuNavegacion.classList.contains('activo') ? 'hidden' : '';
 }
 
 /**
  * Cerrar menú móvil al hacer click en un enlace
  */
-function closeMobileMenu() {
+function cerrarMenuMovil() {
     if (window.innerWidth <= 640) {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
+        botonHamburguesa.classList.remove('activo');
+        menuNavegacion.classList.remove('activo');
         document.body.style.overflow = '';
     }
 }
 
 // Event listeners para navegación móvil
-if (navToggle) {
-    navToggle.addEventListener('click', toggleMobileMenu);
+if (botonHamburguesa) {
+    botonHamburguesa.addEventListener('click', alternarMenuMovil);
 }
 
-navLinks.forEach(link => {
-    link.addEventListener('click', closeMobileMenu);
+enlacesNavegacion.forEach(link => {
+    link.addEventListener('click', cerrarMenuMovil);
 });
 
 // Cerrar menú al hacer click fuera
 document.addEventListener('click', (e) => {
-    if (navMenu && navMenu.classList.contains('active')) {
-        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-            closeMobileMenu();
+    if (menuNavegacion && menuNavegacion.classList.contains('activo')) {
+        if (!menuNavegacion.contains(e.target) && !botonHamburguesa.contains(e.target)) {
+            cerrarMenuMovil();
         }
     }
 });
@@ -53,7 +53,7 @@ document.addEventListener('click', (e) => {
 /**
  * Actualizar enlace activo según la sección visible
  */
-function updateActiveLink() {
+function actualizarEnlaceActivo() {
     const sections = document.querySelectorAll('section[id]');
     const scrollY = window.pageYOffset;
 
@@ -61,12 +61,12 @@ function updateActiveLink() {
         const sectionHeight = section.offsetHeight;
         const sectionTop = section.offsetTop - 100;
         const sectionId = section.getAttribute('id');
-        const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+        const correspondingLink = document.querySelector(`.enlace-navegacion[href="#${sectionId}"]`);
 
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach(link => link.classList.remove('active'));
+            enlacesNavegacion.forEach(link => link.classList.remove('activo'));
             if (correspondingLink) {
-                correspondingLink.classList.add('active');
+                correspondingLink.classList.add('activo');
             }
         }
     });
@@ -77,7 +77,7 @@ function updateActiveLink() {
 /**
  * Scroll suave para enlaces internos
  */
-navLinks.forEach(link => {
+enlacesNavegacion.forEach(link => {
     link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
         
@@ -103,7 +103,7 @@ navLinks.forEach(link => {
  * Agregar sombra al navbar al hacer scroll
  */
 function handleNavbarScroll() {
-    const navbar = document.querySelector('.navbar');
+    const navbar = document.querySelector('.barra-navegacion');
     
     if (window.scrollY > 50) {
         navbar.style.boxShadow = 'var(--shadow-lg)';
@@ -114,21 +114,21 @@ function handleNavbarScroll() {
     }
 }
 
-// ========== SCROLL REVEAL ANIMATIONS ==========
+// ========== REVELACIÓN AL DESPLAZAR ==========
 
 /**
  * Revelar elementos al hacer scroll
  */
-function revealOnScroll() {
-    const reveals = document.querySelectorAll('.scroll-reveal');
+function revelarAlDesplazar() {
+    const elementos = document.querySelectorAll('.revelacion-scroll');
     
-    reveals.forEach(element => {
+    elementos.forEach(element => {
         const windowHeight = window.innerHeight;
         const elementTop = element.getBoundingClientRect().top;
         const revealPoint = 150;
         
         if (elementTop < windowHeight - revealPoint) {
-            element.classList.add('revealed');
+            element.classList.add('revelado');
         }
     });
 }
@@ -138,10 +138,10 @@ function revealOnScroll() {
 /**
  * Manejar búsqueda (placeholder - implementar según necesidades)
  */
-if (searchInput) {
-    searchInput.addEventListener('keypress', (e) => {
+if (entradaBusqueda) {
+    entradaBusqueda.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            const searchTerm = searchInput.value.trim();
+            const searchTerm = entradaBusqueda.value.trim();
             
             if (searchTerm) {
                 console.log('Buscando:', searchTerm);
@@ -153,10 +153,10 @@ if (searchInput) {
     });
     
     // Botón de búsqueda
-    const searchBtn = document.querySelector('.search-btn');
+    const searchBtn = document.querySelector('.boton-busqueda');
     if (searchBtn) {
         searchBtn.addEventListener('click', () => {
-            const searchTerm = searchInput.value.trim();
+            const searchTerm = entradaBusqueda.value.trim();
             
             if (searchTerm) {
                 console.log('Buscando:', searchTerm);
@@ -171,8 +171,8 @@ if (searchInput) {
 /**
  * Agregar interactividad a las tarjetas de destinos
  */
-function initDestinationCards() {
-    const cards = document.querySelectorAll('.destination-card');
+function inicializarTarjetasDestino() {
+    const cards = document.querySelectorAll('.tarjeta-destino');
     
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -197,8 +197,8 @@ function initDestinationCards() {
 /**
  * Manejar clicks en botones de llamada a la acción
  */
-function initCTAButtons() {
-    const ctaButtons = document.querySelectorAll('.hero-cta .btn');
+function inicializarBotonesCTA() {
+    const ctaButtons = document.querySelectorAll('.llamada-accion .boton');
     
     ctaButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -220,12 +220,12 @@ function initCTAButtons() {
     });
 }
 
-// ========== LAZY LOADING DE IMÁGENES ==========
+// ========== CARGA PEREZOSA DE IMÁGENES ==========
 
 /**
- * Lazy loading para imágenes (si se agregan en el futuro)
+ * Carga perezosa para imágenes (si se agregan en el futuro)
  */
-function initLazyLoading() {
+function inicializarCargaPerezosa() {
     const images = document.querySelectorAll('img[data-src]');
     
     const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -242,16 +242,16 @@ function initLazyLoading() {
     images.forEach(img => imageObserver.observe(img));
 }
 
-// ========== THEME TOGGLE (Opcional) ==========
+// ========== CAMBIO DE TEMA (Opcional) ==========
 
 /**
- * Toggle entre tema claro y oscuro
+ * Alternar entre tema claro y oscuro
  */
-function initThemeToggle() {
+function inicializarCambioTema() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     
-    // Si agregas un botón de toggle de tema:
+    // Si agregas un botón de alternar tema:
     // const themeToggle = document.querySelector('.theme-toggle');
     // if (themeToggle) {
     //     themeToggle.addEventListener('click', () => {
@@ -304,16 +304,16 @@ function throttle(func, limit) {
 
 // Scroll events (optimizados)
 window.addEventListener('scroll', debounce(() => {
-    updateActiveLink();
+    actualizarEnlaceActivo();
     handleNavbarScroll();
-    revealOnScroll();
+    revelarAlDesplazar();
 }));
 
 // Resize events
 window.addEventListener('resize', debounce(() => {
     // Cerrar menú móvil si se cambia a desktop
-    if (window.innerWidth > 640 && navMenu.classList.contains('active')) {
-        closeMobileMenu();
+    if (window.innerWidth > 640 && menuNavegacion.classList.contains('activo')) {
+        cerrarMenuMovil();
     }
 }));
 
@@ -326,18 +326,18 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 FlyGo inicializado correctamente');
     
     // Inicializar componentes
-    initDestinationCards();
-    initCTAButtons();
-    initLazyLoading();
-    initThemeToggle();
+    inicializarTarjetasDestino();
+    inicializarBotonesCTA();
+    inicializarCargaPerezosa();
+    inicializarCambioTema();
     
     // Ejecutar funciones iniciales
-    updateActiveLink();
+    actualizarEnlaceActivo();
     handleNavbarScroll();
-    revealOnScroll();
+    revelarAlDesplazar();
     
     // Agregar clase para animaciones de entrada
-    document.body.classList.add('loaded');
+    document.body.classList.add('cargado');
 });
 
 // ========== MANEJO DE ERRORES ==========
@@ -353,4 +353,5 @@ window.addEventListener('error', (e) => {
 // ========== EXPORTAR FUNCIONES (si usas módulos) ==========
 
 // Si usas ES6 modules, puedes exportar funciones:
-// export { toggleMobileMenu, updateActiveLink, debounce, throttle };
+// export { alternarMenuMovil, actualizarEnlaceActivo, debounce, throttle };
+

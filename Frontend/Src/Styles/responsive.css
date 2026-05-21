@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    ESTILOS RESPONSIVE - FLYGO
    ============================================ */
 
@@ -25,26 +25,26 @@
     h3 { font-size: var(--font-size-2xl); }
     
     /* Hero */
-    .hero-title {
+    .titulo-inicio {
         font-size: var(--font-size-4xl);
     }
     
-    .hero-subtitle {
+    .subtitulo-inicio {
         font-size: var(--font-size-base);
     }
     
-    .hero-decoration {
+    .decoracion-inicio {
         width: 300px;
         height: 300px;
     }
     
     /* Navegación */
-    .nav-container {
+    .contenedor-navegacion {
         flex-wrap: wrap;
         gap: var(--spacing-md);
     }
     
-    .nav-menu {
+    .menu-navegacion {
         position: fixed;
         top: 70px;
         left: -100%;
@@ -59,91 +59,91 @@
         border-right: var(--border-width-thin) solid var(--border-color-primary);
     }
     
-    .nav-menu.active {
+    .menu-navegacion.activo {
         left: 0;
     }
     
-    .nav-toggle {
+    .boton-hamburguesa {
         display: flex;
     }
     
-    .nav-toggle.active span:nth-child(1) {
+    .boton-hamburguesa.activo span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
     
-    .nav-toggle.active span:nth-child(2) {
+    .boton-hamburguesa.activo span:nth-child(2) {
         opacity: 0;
     }
     
-    .nav-toggle.active span:nth-child(3) {
+    .boton-hamburguesa.activo span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
     }
     
-    .nav-search {
+    .busqueda-navegacion {
         order: -1;
         width: 100%;
     }
     
-    .search-input {
+    .entrada-busqueda {
         width: 100%;
     }
     
-    .search-input:focus {
+    .entrada-busqueda:focus {
         width: 100%;
     }
     
-    .brand-name {
+    .nombre-marca {
         font-size: var(--font-size-xl);
     }
     
     /* Botones */
-    .hero-cta {
+    .llamada-accion {
         flex-direction: column;
         width: 100%;
     }
     
-    .btn {
+    .boton {
         width: 100%;
         justify-content: center;
     }
     
     /* Secciones */
-    .destinations-section,
-    .hero-section {
+    .seccion-destinos,
+    .seccion-inicio {
         padding: var(--spacing-2xl) 0;
     }
     
-    .section-title {
+    .titulo-seccion {
         font-size: var(--font-size-3xl);
     }
     
-    .section-subtitle {
+    .subtitulo-seccion {
         font-size: var(--font-size-base);
     }
     
     /* Grid de destinos */
-    .destinations-grid {
+    .cuadricula-destinos {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
     
     /* Footer */
-    .footer-content {
+    .contenido-pie-pagina {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
         text-align: center;
     }
     
-    .footer-brand {
+    .marca-pie-pagina {
         align-items: center;
     }
     
-    .social-links {
+    .enlaces-sociales {
         justify-content: center;
     }
     
     /* Container */
-    .container {
+    .contenedor {
         padding: 0 var(--spacing-md);
     }
 }
@@ -154,19 +154,19 @@
         font-size: 15px;
     }
     
-    .hero-title {
+    .titulo-inicio {
         font-size: var(--font-size-5xl);
     }
     
-    .destinations-grid {
+    .cuadricula-destinos {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .nav-menu {
+    .menu-navegacion {
         gap: var(--spacing-md);
     }
     
-    .search-input {
+    .entrada-busqueda {
         width: 200px;
     }
 }
@@ -174,43 +174,43 @@
 /* ========== DESKTOP (1024px+) ========== */
 @media (min-width: 1024px) {
     /* Efectos hover mejorados para desktop */
-    .destination-card:hover .card-image {
+    .tarjeta-destino:hover .imagen-tarjeta {
         transform: scale(1.05);
     }
     
-    .card-image {
+    .imagen-tarjeta {
         transition: transform var(--transition-base);
     }
     
     /* Navegación con efectos */
-    .nav-menu {
+    .menu-navegacion {
         gap: var(--spacing-xl);
     }
     
     /* Hero más espacioso */
-    .hero-section {
+    .seccion-inicio {
         min-height: 95vh;
     }
 }
 
 /* ========== DESKTOP GRANDE (1280px+) ========== */
 @media (min-width: 1280px) {
-    .container {
+    .contenedor {
         max-width: 1200px;
     }
     
-    .destinations-grid {
+    .cuadricula-destinos {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    .hero-title {
+    .titulo-inicio {
         font-size: var(--font-size-6xl);
     }
 }
 
 /* ========== DESKTOP EXTRA GRANDE (1536px+) ========== */
 @media (min-width: 1536px) {
-    .container {
+    .contenedor {
         max-width: 1400px;
     }
     
@@ -223,30 +223,30 @@
 
 /* Landscape en móviles */
 @media (max-height: 500px) and (orientation: landscape) {
-    .hero-section {
+    .seccion-inicio {
         min-height: 100vh;
         padding: var(--spacing-xl) 0;
     }
     
-    .hero-title {
+    .titulo-inicio {
         font-size: var(--font-size-3xl);
         margin-bottom: var(--spacing-sm);
     }
     
-    .hero-subtitle {
+    .subtitulo-inicio {
         font-size: var(--font-size-sm);
         margin-bottom: var(--spacing-md);
     }
     
-    .hero-cta {
+    .llamada-accion {
         gap: var(--spacing-md);
     }
     
-    .btn {
+    .boton {
         padding: var(--spacing-sm) var(--spacing-lg);
     }
     
-    .nav-menu {
+    .menu-navegacion {
         height: calc(100vh - 60px);
         padding: var(--spacing-lg);
     }
@@ -269,12 +269,12 @@
 /* ========== IMPRESIÓN ========== */
 @media print {
     /* Ocultar elementos no necesarios */
-    .navbar,
-    .nav-toggle,
-    .hero-cta,
-    .footer,
-    .search-input,
-    .search-btn {
+    .barra-navegacion,
+    .boton-hamburguesa,
+    .llamada-accion,
+    .pie-pagina,
+    .entrada-busqueda,
+    .boton-busqueda {
         display: none !important;
     }
     
@@ -284,14 +284,14 @@
         color: black;
     }
     
-    .hero-section,
-    .destinations-section {
+    .seccion-inicio,
+    .seccion-destinos {
         background: white;
     }
     
     /* Evitar saltos de página */
-    .destination-card,
-    .hero-content {
+    .tarjeta-destino,
+    .contenido-inicio {
         page-break-inside: avoid;
     }
     
@@ -310,26 +310,26 @@
         --border-color-secondary: rgba(76, 201, 240, 0.5);
     }
     
-    .nav-link,
-    .btn,
-    .destination-card {
+    .enlace-navegacion,
+    .boton,
+    .tarjeta-destino {
         border-width: var(--border-width-medium);
     }
 }
 
 /* Transparencia reducida */
 @media (prefers-reduced-transparency) {
-    .navbar,
-    .destination-card,
-    .search-input {
+    .barra-navegacion,
+    .tarjeta-destino,
+    .entrada-busqueda {
         backdrop-filter: none;
     }
     
-    .navbar {
+    .barra-navegacion {
         background-color: var(--bg-secondary);
     }
     
-    .destination-card {
+    .tarjeta-destino {
         background-color: var(--bg-tertiary);
     }
 }
@@ -338,50 +338,50 @@
 
 /* Ocultar en móvil */
 @media (max-width: 640px) {
-    .hide-mobile {
+    .ocultar-movil {
         display: none !important;
     }
 }
 
 /* Ocultar en tablet */
 @media (min-width: 641px) and (max-width: 1023px) {
-    .hide-tablet {
+    .ocultar-tablet {
         display: none !important;
     }
 }
 
 /* Ocultar en desktop */
 @media (min-width: 1024px) {
-    .hide-desktop {
+    .ocultar-escritorio {
         display: none !important;
     }
 }
 
 /* Mostrar solo en móvil */
 @media (min-width: 641px) {
-    .show-mobile-only {
+    .mostrar-solo-movil {
         display: none !important;
     }
 }
 
 /* Mostrar solo en tablet */
-.show-tablet-only {
+.mostrar-solo-tablet {
     display: none !important;
 }
 
 @media (min-width: 641px) and (max-width: 1023px) {
-    .show-tablet-only {
+    .mostrar-solo-tablet {
         display: block !important;
     }
 }
 
 /* Mostrar solo en desktop */
-.show-desktop-only {
+.mostrar-solo-escritorio {
     display: none !important;
 }
 
 @media (min-width: 1024px) {
-    .show-desktop-only {
+    .mostrar-solo-escritorio {
         display: block !important;
     }
 }
@@ -390,19 +390,19 @@
 
 /* iPhone SE y dispositivos pequeños */
 @media (max-width: 375px) {
-    .hero-title {
+    .titulo-inicio {
         font-size: var(--font-size-3xl);
     }
     
-    .logo {
+    .logotipo {
         width: 40px;
     }
     
-    .brand-name {
+    .nombre-marca {
         font-size: var(--font-size-lg);
     }
     
-    .btn {
+    .boton {
         padding: var(--spacing-sm) var(--spacing-md);
         font-size: var(--font-size-sm);
     }
@@ -410,11 +410,11 @@
 
 /* iPad y tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .nav-container {
+    .contenedor-navegacion {
         padding: 0 var(--spacing-xl);
     }
     
-    .destinations-grid {
+    .cuadricula-destinos {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-xl);
     }
@@ -422,12 +422,13 @@
 
 /* Pantallas ultra anchas */
 @media (min-width: 1920px) {
-    .container {
+    .contenedor {
         max-width: 1600px;
     }
     
-    .hero-decoration {
+    .decoracion-inicio {
         width: 800px;
         height: 800px;
     }
 }
+

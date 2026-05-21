@@ -54,14 +54,14 @@ a:hover {
 }
 
 /* ========== UTILIDADES ========== */
-.container {
+.contenedor {
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: 0 var(--container-padding);
 }
 
 /* ========== NAVEGACIÓN ========== */
-.navbar {
+.barra-navegacion {
     background-color: var(--bg-secondary);
     border-bottom: var(--border-width-thin) solid var(--border-color-primary);
     padding: var(--spacing-md) 0;
@@ -71,7 +71,7 @@ a:hover {
     backdrop-filter: blur(var(--blur-md));
 }
 
-.nav-container {
+.contenedor-navegacion {
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: 0 var(--container-padding);
@@ -81,23 +81,23 @@ a:hover {
     gap: var(--spacing-xl);
 }
 
-.nav-brand {
+.marca-navegacion {
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
 }
 
-.logo {
+.logotipo {
     width: 50px;
     height: auto;
     transition: transform var(--transition-base);
 }
 
-.logo:hover {
+.logotipo:hover {
     transform: scale(1.05);
 }
 
-.brand-name {
+.nombre-marca {
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
@@ -107,18 +107,18 @@ a:hover {
     background-clip: text;
 }
 
-.nav-menu {
+.menu-navegacion {
     display: flex;
     list-style: none;
     gap: var(--spacing-xl);
     align-items: center;
 }
 
-.nav-item {
+.elemento-menu {
     position: relative;
 }
 
-.nav-link {
+.enlace-navegacion {
     color: var(--text-secondary);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
@@ -128,16 +128,16 @@ a:hover {
     position: relative;
 }
 
-.nav-link:hover {
+.enlace-navegacion:hover {
     color: var(--text-primary);
     background-color: rgba(76, 201, 240, 0.1);
 }
 
-.nav-link.active {
+.enlace-navegacion.activo {
     color: var(--color-primary);
 }
 
-.nav-link.active::after {
+.enlace-navegacion.activo::after {
     content: '';
     position: absolute;
     bottom: -2px;
@@ -149,13 +149,13 @@ a:hover {
 }
 
 /* Búsqueda en Navegación */
-.nav-search {
+.busqueda-navegacion {
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.search-input {
+.entrada-busqueda {
     background: var(--bg-tertiary);
     border: var(--border-width-thin) solid var(--border-color-secondary);
     color: var(--text-primary);
@@ -170,22 +170,22 @@ a:hover {
     backdrop-filter: blur(var(--blur-sm));
 }
 
-.search-input::placeholder {
+.entrada-busqueda::placeholder {
     color: var(--text-tertiary);
 }
 
-.search-input:hover {
+.entrada-busqueda:hover {
     border-color: var(--border-color-accent);
 }
 
-.search-input:focus {
+.entrada-busqueda:focus {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.1), var(--shadow-glow);
     background: var(--bg-secondary);
     width: 300px;
 }
 
-.search-btn {
+.boton-busqueda {
     position: absolute;
     right: var(--spacing-sm);
     background: transparent;
@@ -199,12 +199,12 @@ a:hover {
     transition: color var(--transition-base);
 }
 
-.search-btn:hover {
+.boton-busqueda:hover {
     color: var(--color-primary);
 }
 
 /* Botón Hamburguesa (Móvil) */
-.nav-toggle {
+.boton-hamburguesa {
     display: none;
     flex-direction: column;
     gap: 5px;
@@ -214,7 +214,7 @@ a:hover {
     padding: var(--spacing-sm);
 }
 
-.nav-toggle span {
+.boton-hamburguesa span {
     width: 25px;
     height: 3px;
     background-color: var(--text-primary);
@@ -223,7 +223,7 @@ a:hover {
 }
 
 /* ========== SECCIÓN HERO ========== */
-.hero-section {
+.seccion-inicio {
     min-height: 90vh;
     display: flex;
     align-items: center;
@@ -233,14 +233,14 @@ a:hover {
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
-.hero-content {
+.contenido-inicio {
     text-align: center;
     z-index: 2;
     max-width: 800px;
     padding: var(--spacing-2xl);
 }
 
-.hero-title {
+.titulo-inicio {
     font-size: var(--font-size-6xl);
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
@@ -252,21 +252,21 @@ a:hover {
     background-clip: text;
 }
 
-.hero-subtitle {
+.subtitulo-inicio {
     font-size: var(--font-size-xl);
     color: var(--text-secondary);
     margin-bottom: var(--spacing-2xl);
     line-height: var(--line-height-relaxed);
 }
 
-.hero-cta {
+.llamada-accion {
     display: flex;
     gap: var(--spacing-lg);
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.hero-decoration {
+.decoracion-inicio {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -280,7 +280,7 @@ a:hover {
 }
 
 /* ========== BOTONES ========== */
-.btn {
+.boton {
     padding: var(--spacing-md) var(--spacing-xl);
     border-radius: var(--border-radius-lg);
     font-size: var(--font-size-base);
@@ -295,61 +295,61 @@ a:hover {
     gap: var(--spacing-sm);
 }
 
-.btn-primary {
+.boton-primario {
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
     color: white;
     box-shadow: var(--shadow-lg);
 }
 
-.btn-primary:hover {
+.boton-primario:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
-.btn-primary:active {
+.boton-primario:active {
     transform: translateY(0);
 }
 
-.btn-secondary {
+.boton-secundario {
     background: transparent;
     color: var(--text-primary);
     border: var(--border-width-medium) solid var(--border-color-accent);
 }
 
-.btn-secondary:hover {
+.boton-secundario:hover {
     background: rgba(76, 201, 240, 0.1);
     border-color: var(--color-primary);
     transform: translateY(-2px);
 }
 
 /* ========== SECCIÓN DE DESTINOS ========== */
-.destinations-section {
+.seccion-destinos {
     padding: var(--spacing-4xl) 0;
     background-color: var(--bg-secondary);
 }
 
-.section-title {
+.titulo-seccion {
     text-align: center;
     font-size: var(--font-size-4xl);
     color: var(--text-primary);
     margin-bottom: var(--spacing-md);
 }
 
-.section-subtitle {
+.subtitulo-seccion {
     text-align: center;
     font-size: var(--font-size-lg);
     color: var(--text-secondary);
     margin-bottom: var(--spacing-3xl);
 }
 
-.destinations-grid {
+.cuadricula-destinos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--spacing-xl);
     margin-top: var(--spacing-2xl);
 }
 
-.destination-card {
+.tarjeta-destino {
     background: var(--bg-card);
     border: var(--border-width-thin) solid var(--border-color-primary);
     border-radius: var(--border-radius-xl);
@@ -358,36 +358,36 @@ a:hover {
     backdrop-filter: blur(var(--blur-md));
 }
 
-.destination-card:hover {
+.tarjeta-destino:hover {
     transform: translateY(-8px);
     border-color: var(--border-color-accent);
     box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
-.card-image {
+.imagen-tarjeta {
     width: 100%;
     height: 200px;
     background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
     position: relative;
 }
 
-.card-content {
+.contenido-tarjeta {
     padding: var(--spacing-lg);
 }
 
-.card-content h3 {
+.contenido-tarjeta h3 {
     font-size: var(--font-size-xl);
     color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
 }
 
-.card-content p {
+.contenido-tarjeta p {
     font-size: var(--font-size-base);
     color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
 }
 
-.price {
+.precio {
     display: inline-block;
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
@@ -398,66 +398,66 @@ a:hover {
 }
 
 /* ========== FOOTER ========== */
-.footer {
+.pie-pagina {
     background-color: var(--bg-secondary);
     border-top: var(--border-width-thin) solid var(--border-color-primary);
     padding: var(--spacing-3xl) 0 var(--spacing-xl);
     margin-top: var(--spacing-4xl);
 }
 
-.footer-content {
+.contenido-pie-pagina {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-2xl);
     margin-bottom: var(--spacing-2xl);
 }
 
-.footer-brand {
+.marca-pie-pagina {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
 }
 
-.footer-logo {
+.logotipo-pie-pagina {
     width: 60px;
     height: auto;
 }
 
-.footer-brand p {
+.marca-pie-pagina p {
     color: var(--text-tertiary);
     font-size: var(--font-size-sm);
 }
 
-.footer-links h4,
-.footer-social h4 {
+.enlaces-pie-pagina h4,
+.social-pie-pagina h4 {
     color: var(--text-primary);
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-md);
 }
 
-.footer-links ul {
+.enlaces-pie-pagina ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
 
-.footer-links a {
+.enlaces-pie-pagina a {
     color: var(--text-tertiary);
     font-size: var(--font-size-sm);
     transition: color var(--transition-base);
 }
 
-.footer-links a:hover {
+.enlaces-pie-pagina a:hover {
     color: var(--color-primary);
 }
 
-.social-links {
+.enlaces-sociales {
     display: flex;
     gap: var(--spacing-md);
 }
 
-.social-links a {
+.enlaces-sociales a {
     width: 40px;
     height: 40px;
     display: flex;
@@ -472,20 +472,20 @@ a:hover {
     transition: all var(--transition-base);
 }
 
-.social-links a:hover {
+.enlaces-sociales a:hover {
     background: var(--color-primary);
     color: white;
     border-color: var(--color-primary);
     transform: translateY(-3px);
 }
 
-.footer-bottom {
+.pie-inferior {
     text-align: center;
     padding-top: var(--spacing-xl);
     border-top: var(--border-width-thin) solid var(--border-color-primary);
 }
 
-.footer-bottom p {
+.pie-inferior p {
     color: var(--text-tertiary);
     font-size: var(--font-size-sm);
     margin: 0;
