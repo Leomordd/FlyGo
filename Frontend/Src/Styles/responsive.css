@@ -432,3 +432,45 @@
     }
 }
 
+/* Responsive */
+@media (max-width: 992px) {
+    .beneficios-personalizado {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .metricas-personalizado {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .intro-personalizado {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .seccion-personalizado {
+        padding: var(--spacing-3xl) var(--spacing-md);
+    }
+
+    .contenedor-personalizado {
+        padding: var(--spacing-lg);
+    }
+
+    .titulo-inicio-plan {
+        font-size: var(--font-size-3xl);
+    }
+
+    .intro-personalizado h3 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .beneficios-personalizado,
+    .metricas-personalizado {
+        grid-template-columns: 1fr;
+    }
+
+    .boton {
+        width: 100%;
+    }
+}

@@ -12,6 +12,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    cursor: url('https://cdn.cursors-4u.net/previews/buff-planet-earth-7b4d5206-32.webp') 32 32, auto !important;
 }
 
 body {
@@ -58,6 +60,7 @@ a:hover {
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: 0 var(--container-padding);
+    text-align: center;
 }
 
 /* ========== NAVEGACIÓN ========== */
@@ -97,14 +100,10 @@ a:hover {
     transform: scale(1.05);
 }
 
-.nombre-marca {
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--text-primary);
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.logotipo-movil {
+    width: 80px;
+    height: auto;
+    transition: transform var(--transition-base);
 }
 
 .menu-navegacion {
@@ -126,6 +125,7 @@ a:hover {
     border-radius: var(--border-radius-md);
     transition: all var(--transition-base);
     position: relative;
+    text-select: none;
 }
 
 .enlace-navegacion:hover {
@@ -217,7 +217,7 @@ a:hover {
 .boton-hamburguesa span {
     width: 25px;
     height: 3px;
-    background-color: var(--text-primary);
+    background-color: var(--color-secondary);
     border-radius: var(--border-radius-sm);
     transition: all var(--transition-base);
 }
@@ -230,7 +230,6 @@ a:hover {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
 .contenido-inicio {
@@ -310,6 +309,21 @@ a:hover {
     transform: translateY(0);
 }
 
+.boton-plan-personalizado {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-secondary));
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.boton-plan-personalizado:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+}
+
+.boton-plan-personalizado:active {
+    transform: translateY(0);
+}
+
 .boton-secundario {
     background: transparent;
     color: var(--text-primary);
@@ -324,123 +338,195 @@ a:hover {
 
 /* ========== SECCIÓN DE DESTINOS ========== */
 .seccion-personalizado {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: var(--spacing-4xl) 0;
-    background-color: var(--bg-secondary);
     width: 100%;
-    height: 800px;
-    gap: 50px;
+    padding: var(--spacing-4xl) var(--spacing-lg);
+}
+
+.encabezado-plan {
+    max-width: 760px;
+    margin: 0 auto var(--spacing-2xl);
+    text-align: center;
+}
+
+.etiqueta-plan {
+    display: inline-block;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 .titulo-inicio-plan {
-    text-align: center;
-    font-size: var(--font-size-4xl);
+    margin: 0 0 var(--spacing-md);
     color: var(--text-primary);
-    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-4xl);
 }
 
+.encabezado-plan p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+}
 
 .contenedor-personalizado {
-    display: flex;
+    width: min(1180px, 100%);
+    margin: 0 auto;
     padding: var(--spacing-2xl);
-    width: 95%;
-    height: 100%;
     background: var(--bg-card);
     border: var(--border-width-thin) solid var(--border-color-primary);
     border-radius: var(--border-radius-xl);
-    overflow: hidden;
-    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
     backdrop-filter: blur(var(--blur-md));
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .contenedor-personalizado:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     border-color: var(--border-color-accent);
     box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
-.contenedor-personalizado1 h1 {
-    text-align: end;
+.intro-personalizado {
     display: flex;
-    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.intro-personalizado h3 {
+    margin: 0 0 var(--spacing-sm);
+    color: var(--text-primary);
     font-size: var(--font-size-3xl);
 }
 
-.contenedor-personalizado1 p {
-    width: 80%;
+.intro-personalizado h3 span {
+    width: 40px;
+    height: 40px;
+    background-image: url("../Assets/icon/avion2.svg");
+    background-size: 130px 90px;
+    background-repeat: no-repeat;
+    background-position: center;    
+}
+
+
+.intro-personalizado p {
+    max-width: 620px;
+    margin: 0;
+    color: var(--text-secondary);
     font-size: var(--font-size-base);
+    line-height: 1.7;
 }
 
-.contenedor-personalizado2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
-    align-items: start;
-    width: 100%;
-    height: 250px;
+.beneficios-personalizado {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.beneficio-card {
+    min-height: 230px;
+    padding: var(--spacing-lg);
     background: var(--bg-primary);
-    border-radius: var(--border-radius-xl);
-    overflow: hidden;
-    backdrop-filter: blur(var(--blur-md));
-    padding: var(--spacing-lg);
-    column-rule: 2px solid #ccc;
+    border: var(--border-width-thin) solid var(--border-color-primary);
+    border-radius: var(--border-radius-lg);
+    transition: transform var(--transition-base), border-color var(--transition-base);
 }
 
-.contenedor-personalizado2-item h3 {
-    font-size: var(--font-size-xl);
+.beneficio-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-color-accent);
 }
 
-.contenedor-personalizado2-item {
-    padding-right: 20px;
-    border-right: 2px solid #383942;
-    height: 150px
-}
-
-.contenedor-personalizado2-item2 h3 {
-    font-size: var(--font-size-xl);
-}
-
-.contenedor-personalizado3 {
-    display: flex;
-    align-content: center;
-    justify-content: center;
+.beneficio-card span {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    margin-bottom: var(--spacing-md);
     align-items: center;
-    margin-top: -50px;
-    z-index: 100;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-primary-dark);
+    color: #fff;
+    font-weight: 700;
 }
 
-.contenedor-personalizado4 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
-    align-items: start;
-    width: 100%;
-    height: 120px;
-    overflow: hidden;
-    padding: var(--spacing-lg);
-    column-rule: 2px solid #ccc;
-}
-
-.contenedor-personalizado4-item h3 {
+.beneficio-card h4 {
+    margin: 0 0 var(--spacing-sm);
+    color: var(--text-primary);
     font-size: var(--font-size-lg);
 }
 
-.contenedor-personalizado4-item {
-    height: 120px
+.beneficio-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
 }
+
+.metricas-personalizado {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    border-top: var(--border-width-thin) solid var(--border-color-primary);
+    overflow: hidden;
+    border-radius: var(--border-radius-lg);
+}
+
+.metricas-personalizado::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -35px;
+    width: 100%;
+    height: 140px;
+    opacity: 0.38;
+    pointer-events: none;
+    background-image: url("../Assets/icon/avion\ svg.svg");
+    background-size: 130px 90px;
+    background-repeat: repeat-x;
+    background-position: center;
+    transform: translateY(10px);
+}
+
+.metricas-personalizado::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to top,
+        var(--color-secondary-transparent) 0%,
+        transparent 65%
+    );
+}
+
+.metricas-personalizado div {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.metricas-personalizado strong {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+}
+
+.metricas-personalizado span {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
 
 .seccion-destinos {
     padding: var(--spacing-4xl) 0;
-    background-color: var(--bg-secondary);
 }
 
 .titulo-seccion {
@@ -481,33 +567,46 @@ a:hover {
 
 .imagen-tarjeta {
     width: 100%;
-    height: 200px;
+    height: 170px;
     background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
     position: relative;
 }
 
 .contenido-tarjeta {
+    height: 130px;
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-lg); 
+    justify-content: center;
+    align-items: start;
     padding: var(--spacing-lg);
 }
 
 .contenido-tarjeta h3 {
+    text-align: left;
     font-size: var(--font-size-xl);
     color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    flex: 2;
 }
 
 .contenido-tarjeta p {
     font-size: var(--font-size-base);
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-md);
 }
 
 .precio {
+    flex: 1;
+    text-align: center;
     display: inline-block;
     font-size: var(--font-size-lg);
+    text-shadow: var(--text-shadow-md);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    background: rgba(76, 201, 240, 0.1);
+    color: var(--bg-primary  );
+    background: rgba(76, 201, 240, 1);
     padding: var(--spacing-xs) var(--spacing-md);
     border-radius: var(--border-radius-md);
 }
@@ -530,6 +629,9 @@ a:hover {
 .marca-pie-pagina {
     display: flex;
     flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    align-content: center;
     gap: var(--spacing-md);
 }
 

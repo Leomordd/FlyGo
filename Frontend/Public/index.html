@@ -31,12 +31,12 @@
         <div class="contenedor-navegacion">
             <div class="marca-navegacion">
                 <img src="../Src/Assets/icon/logotipo (1).png" alt="Logotipo de FlyGo" class="logotipo">
-                <span class="nombre-marca">FlyGo</span>
+                <img src="../Src/Assets/icon/logotexto.png" alt="Logotipo de FlyGo" class="logotipo-movil">
             </div>
             
             <ul class="menu-navegacion">
                 <li class="elemento-menu"><a href="#inicio" class="enlace-navegacion activo">Inicio</a></li>
-                <li class="elemento-menu"><a href="#destinos" class="enlace-navegacion">Destinos</a></li>
+                <li class="elemento-menu"><a href="#destinos" class="enlace-navegacion">Planes</a></li>
                 <li class="elemento-menu"><a href="#ofertas" class="enlace-navegacion">Ofertas</a></li>
                 <li class="elemento-menu"><a href="#contacto" class="enlace-navegacion">Contacto</a></li>
             </ul>
@@ -74,63 +74,90 @@
     </section>
 
 
-    <section id="plan-personalizado" class="seccion-personalizado">
+<section id="plan-personalizado" class="seccion-personalizado">
+    <div class="encabezado-plan">
+        <span class="etiqueta-plan">Viaje a tu medida</span>
         <h2 class="titulo-inicio-plan">Plan Personalizado</h2>
-        <div class="contenedor-personalizado">
-            <div class="contenedor-personalizado1">
-                <h1>Personaliza tu plan</h1>
-                <p>Crea tu viaje ideal eligendo destino, fechas, presupuesto y preferencias.</p>
+        <p>
+            Diseña tu viaje ideal según tu destino, fechas, presupuesto y estilo de viaje.
+        </p>
+    </div>
+
+    <div class="contenedor-personalizado">
+        <div class="intro-personalizado">
+            <div>
+                <h3><span></span> Personaliza tu plan</h3>
+                <p>
+                    Responde unas pocas preguntas y recibe una propuesta pensada para ti,
+                    sin perder tiempo comparando opciones.
+                </p>
             </div>
-           <div class="contenedor-personalizado2">
-                <div class="contenedor-personalizado2-item">
-                     <h3>Descubre tu Destino Ideal</h3>
-                    <p>Encuentra lugares increíbles que se adaptan exactamente a lo que buscas, sin perder horas buscando en internet.</p>
-                </div>
-    
-                <div class="contenedor-personalizado2-item">
-                    <h3>Planes a tu Medida y Bolsillo</h3>
-                    <p>Dinos cuánto quieres gastar. Nuestro cuestionario inteligente arma la ruta perfecta optimizando cada centavo.</p>
-                </div>
-    
-                <div class="contenedor-personalizado2-item">
-                    <h3>Flexibilidad Total</h3>
-                    <p>Elige tus fechas y personaliza tus hoteles. Nosotros nos encargamos de que la logística de tu viaje cuadre a la perfección.</p>
-                </div>
-                    <div class="contenedor-personalizado2-item2">
-                    <h3>Cero Estrés, Todo Listo</h3>
-                    <p>Responde unas pocas preguntas y recibe un itinerario completo con actividades listas para disfrutar.</p>
-                </div>
-            </div> 
-            <div class="contenedor-personalizado3">
-                <button class="boton boton-primario">Vamos Allá</button>
+
+            <button class="boton boton-plan-personalizado">Vamos allá</button>
+        </div>
+
+        <div class="beneficios-personalizado">
+            <article class="beneficio-card">
+                <span>01</span>
+                <h4>Descubre tu destino ideal</h4>
+                <p>
+                    Encuentra lugares increíbles que se adaptan exactamente a lo que buscas.
+                </p>
+            </article>
+
+            <article class="beneficio-card">
+                <span>02</span>
+                <h4>Planes a tu medida y bolsillo</h4>
+                <p>
+                    Define cuánto quieres gastar y armamos una ruta optimizada para tu presupuesto.
+                </p>
+            </article>
+
+            <article class="beneficio-card">
+                <span>03</span>
+                <h4>Flexibilidad total</h4>
+                <p>
+                    Elige fechas, hoteles y preferencias. Nosotros ajustamos la logística.
+                </p>
+            </article>
+
+            <article class="beneficio-card">
+                <span>04</span>
+                <h4>Cero estrés, todo listo</h4>
+                <p>
+                    Recibe un itinerario completo con actividades listas para disfrutar.
+                </p>
+            </article>
+        </div>
+
+        <div class="metricas-personalizado">
+            <div>
+                <strong>100%</strong>
+                <span>Personalizado</span>
             </div>
-            <div class="contenedor-personalizado4">
-                <div class="contenedor-personalizado4-item">
-                     <h3>Iterinarios a Medida</h3>
-                    <p>100% Personalizado</p>
-                </div>
-    
-                <div class="contenedor-personalizado4-item">
-                    <h3>Mejores Precios</h3>
-                    <p>Garantizado</p>
-                </div>
-    
-                <div class="contenedor-personalizado4-item">
-                    <h3>Asistencia 24/7</h3>
-                    <p>Siempre Contigo</p>
-                </div>
-                    <div class="contenedor-personalizado4-item">
-                    <h3>Cancelación flexible</h3>
-                    <p>Planifica sin preocupaciones</p>
-                </div>
-                
+
+            <div>
+                <strong>Mejores precios</strong>
+                <span>Opciones optimizadas</span>
             </div>
+
+            <div>
+                <strong>24/7</strong>
+                <span>Asistencia disponible</span>
             </div>
-    </section>
+
+            <div>
+                <strong>Flexible</strong>
+                <span>Planifica sin preocupaciones</span>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Sección de Destinos Destacados -->
     <section id="planes-populares" class="seccion-destinos">
         <div class="contenedor">
+            <span class="etiqueta-plan">Viajes Rapidos</span>
             <h2 class="titulo-seccion">Planes Populares</h2>
             <p class="subtitulo-seccion">Explora los lugares más increíbles del mundo</p>
             
@@ -138,8 +165,9 @@
                 <article class="tarjeta-destino">
                     <div class="imagen-tarjeta"></div>
                     <div class="contenido-tarjeta">
-                        <h3>París, Francia</h3>
-                        <p>La ciudad del amor y la luz</p>
+                        <h3>París, Francia 
+                            <p>La ciudad del amor y la luz</p>
+                        </h3>
                         <span class="precio">Desde $899</span>
                     </div>
                 </article>
@@ -147,8 +175,9 @@
                 <article class="tarjeta-destino">
                     <div class="imagen-tarjeta"></div>
                     <div class="contenido-tarjeta">
-                        <h3>Tokio, Japón</h3>
-                        <p>Tradición y modernidad</p>
+                        <h3>Tokio, Japón 
+                            <p>Tradición y modernidad</p>
+                        </h3>
                         <span class="precio">Desde $1,299</span>
                     </div>
                 </article>
@@ -156,8 +185,9 @@
                 <article class="tarjeta-destino">
                     <div class="imagen-tarjeta"></div>
                     <div class="contenido-tarjeta">
-                        <h3>Nueva York, USA</h3>
-                        <p>La ciudad que nunca duerme</p>
+                        <h3>Nueva York, USA
+                            <p>La ciudad que nunca duerme</p>
+                        </h3>
                         <span class="precio">Desde $799</span>
                     </div>
                 </article>
@@ -177,7 +207,7 @@
                     <h4>Enlaces Rápidos</h4>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#destinos">Destinos</a></li>
+                        <li><a href="#destinos">Planes</a></li>
                         <li><a href="#ofertas">Ofertas</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
