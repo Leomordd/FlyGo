@@ -1,4 +1,7 @@
 @echo off
+:: Cambia el color de la consola (0 = Fondo Negro, 9 = Texto Azul Claro)
+color 0B
+
 :: Cambia la consola a la carpeta donde está guardado ESTE archivo .bat
 cd /d "%~dp0"
 
