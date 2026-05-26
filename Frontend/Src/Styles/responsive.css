@@ -108,8 +108,7 @@
     }
     
     /* Secciones */
-    .seccion-destinos,
-    .seccion-inicio {
+    .seccion-destinos{
         padding: var(--spacing-2xl) 0;
     }
     

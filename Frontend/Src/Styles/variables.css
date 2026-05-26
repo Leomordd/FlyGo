@@ -19,13 +19,16 @@
     --text-tertiary: #718096;
     --text-dark: #0a0f18;
     --text-accent: #4cc9f0;
+
+
     
     /* Colores de Marca */
     --color-primary: #4cc9f0;
     --color-primary-light: #72d4f3;
     --color-primary-dark: #3b82f6;
     --color-secondary: #212ff8;
-    --color-secondary-transparent: rgba(67, 64, 247, 0.144);
+    --color-secondary-transparent: #0328862c;
+    --color-black-transparent: #0e101585;
     --color-accent: #f72585;
     
     /* Estados */

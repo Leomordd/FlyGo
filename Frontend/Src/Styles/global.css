@@ -230,13 +230,55 @@ a:hover {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    
+    /* 1. Creamos un nuevo contexto de apilamiento */
+    z-index: 1; 
 }
 
+/* El contenedor interno para tus textos/botones */
+.seccion-inicio > * {
+    position: relative;
+    z-index: 3; /* Asegura que el texto quede ARRIBA de todo */
+}
+
+.seccion-inicio::before {
+    content: "";
+    position: absolute;
+    inset: 0; 
+    opacity: 0.35; 
+    pointer-events: none;
+    
+    background-image: url("../Assets/Img/transreal.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    
+    /* Escalamos un poco para que al bajar 10px no se vea el fondo de atrás */
+    transform: scale(1.05) translateY(10px); 
+    
+    z-index: 1;
+}
+.seccion-inicio::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to top,
+        var(--color-black-transparent) 0%,
+        var(--color-secondary-transparent) 5%,
+        transparent 65%,
+        var(--color-black-transparent) 80%
+    );
+    
+    z-index: 2; /* Capa media (Gradiente sobre el fondo) */
+}
 .contenido-inicio {
     text-align: center;
     z-index: 2;
     max-width: 800px;
     padding: var(--spacing-2xl);
+
 }
 
 .titulo-inicio {
@@ -711,15 +753,20 @@ a:hover {
 /* ========== SCROLLBAR PERSONALIZADA ========== */
 ::-webkit-scrollbar {
     width: 10px;
+    border-left: var(--border-width-thin) solid var(--border-color-primary);
+
 }
 
 ::-webkit-scrollbar-track {
     background: var(--bg-secondary);
+        border-left: var(--border-width-thin) solid var(--border-color-primary);
+
 }
 
 ::-webkit-scrollbar-thumb {
     background: var(--bg-tertiary);
     border-radius: var(--border-radius-md);
+    border-left: var(--border-width-thin) solid var(--border-color-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
