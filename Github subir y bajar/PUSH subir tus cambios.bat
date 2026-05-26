@@ -1,69 +1,29 @@
 @echo off
-title FlyGo Git Manager
-color 0B
+:: Cambia la consola a la carpeta donde está guardado ESTE archivo .bat
+cd /d "%~dp0"
 
 echo ============================================
-echo              FLYGO GIT MANAGER
+echo            FLYGO GIT MANAGER
 echo ============================================
-echo.
 echo [1/4] Entrando al proyecto...
-echo.
-
-:: Cambiamos a la carpeta y verificamos si existe
-cd /d "C:\Users\El Loco Mike\Desktop\FlyGo\FlyGo"
+echo Carpeta actual: %cd%
 
 echo ============================================
 echo [2/4] Descargando cambios de GitHub...
 echo ============================================
-echo.
 git pull
-echo.
 
 echo ============================================
-echo [3/4] Escribi el mensaje del commit
+echo [3/4] Preparando y escribiendo el mensaje del commit
 echo ============================================
-echo.
-set /p commitmsg=Commit: 
+git add -A
 
-:: Verificamos que el mensaje no esté vacío
-if "%commitmsg%"=="" (
-    echo Error: El mensaje del commit no puede estar vacio.
-    pause
-    exit
-)
+set /p msg="Commit: "
+git commit -m "%msg%"
 
-echo.
 echo ============================================
 echo [4/4] Subiendo cambios...
 echo ============================================
-echo.
-
-:: Preparamos y hacemos el commit
-git add .
-git commit -m "%commitmsg%"
-
-:: Verificamos si el commit tuvo éxito antes de intentar el push
-if %errorlevel% neq 0 (
-    echo.
-    echo [!] No se realizaron cambios para subir.
-    echo.
-    pause
-    exit
-)
-
-:: Subimos los cambios
 git push
-if %errorlevel% neq 0 (
-    echo.
-    echo [!] Error al subir a GitHub.
-    pause
-    exit
-)
-
-echo.
-echo ============================================
-echo       TODO SUBIDO CORRECTAMENTE
-echo ============================================
-echo.
 
 pause

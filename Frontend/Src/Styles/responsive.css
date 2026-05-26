@@ -13,6 +13,32 @@
    - 2XL: 1536px+ (Desktop extra grande)
 */
 
+/* ========== OPTIMIZACIÓN DEL FONDO TRANSREAL PARA MÓVILES ========== */
+@media (max-width: 768px) {
+    /* Mejorar visualización del fondo transreal en celulares */
+    .seccion-inicio::before {
+        opacity: 0.5;
+        background-attachment: scroll;
+        background-size: cover;
+        transform: scale(1.1) translateY(5px);
+    }
+    
+    .seccion-inicio::after {
+        background: linear-gradient(
+            to top,
+            var(--color-black-transparent) 0%,
+            var(--color-secondary-transparent) 3%,
+            transparent 55%,
+            var(--color-black-transparent) 75%
+        );
+    }
+    
+    .decoracion-inicio {
+        width: 250px;
+        height: 250px;
+    }
+}
+
 /* ========== TABLET PEQUEÑA (640px+) ========== */
 @media (max-width: 640px) {
     /* Tipografía */
@@ -31,6 +57,10 @@
     
     .subtitulo-inicio {
         font-size: var(--font-size-base);
+    }
+    
+    .contenido-inicio {
+        padding: var(--spacing-xl) var(--spacing-md);
     }
     
     .decoracion-inicio {
@@ -126,6 +156,33 @@
         gap: var(--spacing-lg);
     }
     
+    /* Tarjetas de destino */
+    .tarjeta-destino {
+        max-height: none;
+    }
+    
+    .imagen-tarjeta {
+        height: 150px;
+    }
+    
+    .contenido-tarjeta {
+        height: auto;
+        min-height: 110px;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .contenido-tarjeta h3 {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .precio {
+        width: 100%;
+        text-align: center;
+    }
+    
     /* Footer */
     .contenido-pie-pagina {
         grid-template-columns: 1fr;
@@ -135,10 +192,17 @@
     
     .marca-pie-pagina {
         align-items: center;
+        text-align: center;
     }
     
     .enlaces-sociales {
         justify-content: center;
+    }
+    
+    .enlaces-pie-pagina ul,
+    .enlaces-pie-pagina,
+    .social-pie-pagina {
+        text-align: center;
     }
     
     /* Container */
@@ -471,5 +535,21 @@
 
     .boton {
         width: 100%;
+    }
+    
+    /* Optimizaciones adicionales para pantallas muy pequeñas */
+    .intro-personalizado {
+        gap: var(--spacing-md);
+    }
+    
+    .beneficio-card {
+        min-height: auto;
+        padding: var(--spacing-md);
+    }
+    
+    .metricas-personalizado::before {
+        opacity: 0.25;
+        height: 100px;
+        background-size: 100px 70px;
     }
 }

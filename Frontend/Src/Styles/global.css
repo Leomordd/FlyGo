@@ -252,6 +252,7 @@ a:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; 
+    background-attachment: fixed;
     
     /* Escalamos un poco para que al bajar 10px no se vea el fondo de atrás */
     transform: scale(1.05) translateY(10px); 
@@ -267,7 +268,7 @@ a:hover {
         to top,
         var(--color-black-transparent) 0%,
         var(--color-secondary-transparent) 5%,
-        transparent 65%,
+        transparent 50%,
         var(--color-black-transparent) 80%
     );
     
@@ -278,7 +279,9 @@ a:hover {
     z-index: 2;
     max-width: 800px;
     padding: var(--spacing-2xl);
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .titulo-inicio {
@@ -615,12 +618,13 @@ a:hover {
 }
 
 .contenido-tarjeta {
-    height: 130px;
+    height: auto;
+    min-height: 130px;
     display: flex;
     flex-direction: row;
     gap: var(--spacing-lg); 
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     padding: var(--spacing-lg);
 }
 

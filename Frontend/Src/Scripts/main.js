@@ -23,7 +23,7 @@ function alternarMenuMovil() {
  * Cerrar menú móvil al hacer click en un enlace
  */
 function cerrarMenuMovil() {
-    if (window.innerWidth <= 640) {
+    if (window.innerWidth <= 1023) {
         botonHamburguesa.classList.remove('activo');
         menuNavegacion.classList.remove('activo');
         document.body.style.overflow = '';
@@ -315,7 +315,7 @@ window.addEventListener('scroll', debounce(() => {
 // Resize events
 window.addEventListener('resize', debounce(() => {
     // Cerrar menú móvil si se cambia a desktop
-    if (window.innerWidth > 640 && menuNavegacion.classList.contains('activo')) {
+    if (window.innerWidth > 1023 && menuNavegacion.classList.contains('activo')) {
         cerrarMenuMovil();
     }
 }));
