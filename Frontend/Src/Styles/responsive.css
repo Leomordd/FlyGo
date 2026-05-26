@@ -1,323 +1,677 @@
-﻿/* ============================================
+/* ============================================
    ESTILOS RESPONSIVE - FLYGO
    ============================================ */
 
-/* ========== BREAKPOINTS ========== */
-/* 
-   Mobile First Approach:
-   - Base: 0-639px (Mobile)
-   - SM: 640px+ (Tablet pequeña)
-   - MD: 768px+ (Tablet)
-   - LG: 1024px+ (Desktop)
-   - XL: 1280px+ (Desktop grande)
-   - 2XL: 1536px+ (Desktop extra grande)
-*/
-
-/* ========== OPTIMIZACIÓN DEL FONDO TRANSREAL PARA MÓVILES ========== */
-@media (max-width: 768px) {
-    /* Mejorar visualización del fondo transreal en celulares */
-    .seccion-inicio::before {
-        opacity: 0.5;
-        background-attachment: scroll;
-        background-size: cover;
-        transform: scale(1.1) translateY(5px);
+/* ========== DESKTOP MEDIANO ========== */
+@media (max-width: 1360px) {
+    .contenedor-navegacion {
+        gap: var(--spacing-lg);
+        justify-content: space-between;
     }
-    
+
+    .menu-navegacion {
+        gap: var(--spacing-md);
+    }
+
+    .entrada-busqueda {
+        width: 220px;
+    }
+
+    .entrada-busqueda:focus {
+        width: 240px;
+    }
+
+    .boton-iniciar-sesion,
+    .boton-registrarse {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+
+/* ========== DESKTOP COMPACTO ========== */
+@media (max-width: 1200px) {
+    .contenedor-navegacion {
+        gap: var(--spacing-md);
+    }
+
+    .menu-navegacion {
+        gap: var(--spacing-sm);
+    }
+
+    .entrada-busqueda {
+        width: 190px;
+    }
+
+    .entrada-busqueda:focus {
+        width: 210px;
+    }
+
+    .beneficios-personalizado,
+    .metricas-personalizado {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ========== TABLET Y MENU MOVIL ========== */
+@media (max-width: 1023px) {
+    html {
+        font-size: 15px;
+    }
+
+    .barra-navegacion {
+        padding: var(--spacing-sm) 0;
+    }
+
+    .contenedor-navegacion {
+        min-height: 64px;
+        justify-content: space-between;
+        gap: var(--spacing-md);
+    }
+
+    .marca-navegacion {
+        flex-shrink: 0;
+        gap: var(--spacing-sm);
+    }
+
+    .logotipo {
+        width: 44px;
+    }
+
+    .logotipo-movil {
+        width: 76px;
+    }
+
+    .boton-hamburguesa {
+        display: flex;
+        position: relative;
+        z-index: calc(var(--z-fixed) + 2);
+        flex-shrink: 0;
+    }
+
+    .boton-hamburguesa.activo span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .boton-hamburguesa.activo span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .boton-hamburguesa.activo span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    .menu-navegacion {
+        position: fixed;
+        top: 81px;
+        left: 0;
+        width: 100%;
+        max-height: calc(100vh - 81px);
+        overflow-y: auto;
+        padding: var(--spacing-xl) var(--container-padding);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-md);
+        background: var(--bg-overlay);
+        border-bottom: var(--border-width-thin) solid var(--border-color-primary);
+        box-shadow: var(--shadow-xl);
+        transform: translateY(-125%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform var(--transition-base), opacity var(--transition-base);
+        z-index: var(--z-fixed);
+    }
+
+    .menu-navegacion.activo {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .elemento-menu {
+        width: 100%;
+    }
+
+    .enlace-navegacion {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+    }
+
+    .acciones-menu-movil {
+        display: flex;
+        grid-column: 1 / -1;
+        gap: var(--spacing-md);
+        padding-top: var(--spacing-md);
+        border-top: var(--border-width-thin) solid var(--border-color-primary);
+    }
+
+    .acciones-menu-movil .boton {
+        flex: 1;
+        width: auto;
+    }
+
+    .busqueda-navegacion {
+        flex: 1 1 280px;
+        max-width: 360px;
+    }
+
+    .entrada-busqueda,
+    .entrada-busqueda:focus {
+        width: 100%;
+    }
+
+    .acciones-usuario {
+        gap: var(--spacing-sm);
+    }
+
+    .boton-carrito {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        flex-shrink: 0;
+    }
+
+    .boton-iniciar-sesion,
+    .boton-registrarse {
+        min-height: 40px;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+        white-space: nowrap;
+    }
+
+    .seccion-inicio {
+        min-height: calc(100vh - 81px);
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .seccion-inicio::before {
+        background-attachment: scroll;
+        background-position: center top;
+        opacity: 0.42;
+        transform: scale(1.08) translateY(4px);
+    }
+
+    .contenido-inicio {
+        max-width: 720px;
+        padding: var(--spacing-2xl) var(--spacing-xl);
+    }
+
+    .titulo-inicio {
+        font-size: var(--font-size-5xl);
+    }
+
+    .subtitulo-inicio {
+        font-size: var(--font-size-lg);
+    }
+
+    .decoracion-inicio {
+        width: 430px;
+        height: 430px;
+    }
+
+    .seccion-personalizado,
+    .seccion-destinos {
+        padding-top: var(--spacing-3xl);
+        padding-bottom: var(--spacing-3xl);
+    }
+
+    .contenedor-personalizado {
+        padding: var(--spacing-xl);
+    }
+
+    .intro-personalizado {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .intro-personalizado .boton {
+        align-self: stretch;
+    }
+
+    .cuadricula-destinos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contenido-pie-pagina {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--spacing-xl);
+    }
+}
+
+/* ========== TABLET PEQUENA ========== */
+@media (max-width: 768px) {
+    .contenedor,
+    .contenedor-navegacion {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+
+    .contenedor-navegacion {
+        flex-wrap: wrap;
+    }
+
+    .marca-navegacion {
+        order: 1;
+    }
+
+    .acciones-usuario {
+        order: 2;
+        margin-left: auto;
+    }
+
+    .boton-hamburguesa {
+        order: 3;
+    }
+
+    .busqueda-navegacion {
+        order: 4;
+        flex: 1 0 100%;
+        max-width: none;
+    }
+
+    .menu-navegacion {
+        top: 129px;
+        max-height: calc(100vh - 129px);
+    }
+
+    .seccion-inicio {
+        min-height: calc(100vh - 129px);
+        padding: var(--spacing-2xl) 0;
+    }
+
     .seccion-inicio::after {
         background: linear-gradient(
             to top,
             var(--color-black-transparent) 0%,
-            var(--color-secondary-transparent) 3%,
-            transparent 55%,
-            var(--color-black-transparent) 75%
+            var(--color-secondary-transparent) 8%,
+            transparent 58%,
+            var(--color-black-transparent) 82%
         );
     }
-    
-    .decoracion-inicio {
-        width: 250px;
-        height: 250px;
-    }
-}
 
-/* ========== TABLET PEQUEÑA (640px+) ========== */
-@media (max-width: 640px) {
-    /* Tipografía */
-    html {
-        font-size: 14px;
-    }
-    
-    h1 { font-size: var(--font-size-4xl); }
-    h2 { font-size: var(--font-size-3xl); }
-    h3 { font-size: var(--font-size-2xl); }
-    
-    /* Hero */
-    .titulo-inicio {
-        font-size: var(--font-size-4xl);
-    }
-    
-    .subtitulo-inicio {
-        font-size: var(--font-size-base);
-    }
-    
     .contenido-inicio {
         padding: var(--spacing-xl) var(--spacing-md);
     }
-    
-    .decoracion-inicio {
-        width: 300px;
-        height: 300px;
-    }
-    
-    /* Navegación */
-    .contenedor-navegacion {
-        flex-wrap: wrap;
-        gap: var(--spacing-md);
-    }
-    
-    .menu-navegacion {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background-color: var(--bg-secondary);
-        flex-direction: column;
-        padding: var(--spacing-2xl);
-        gap: var(--spacing-lg);
-        transition: left var(--transition-base);
-        z-index: var(--z-fixed);
-        border-right: var(--border-width-thin) solid var(--border-color-primary);
-    }
-    
-    .menu-navegacion.activo {
-        left: 0;
-    }
-    
-    .boton-hamburguesa {
-        display: flex;
-    }
-    
-    .boton-hamburguesa.activo span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .boton-hamburguesa.activo span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .boton-hamburguesa.activo span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-    
-    .busqueda-navegacion {
-        order: -1;
-        width: 100%;
-    }
-    
-    .entrada-busqueda {
-        width: 100%;
-    }
-    
-    .entrada-busqueda:focus {
-        width: 100%;
-    }
-    
-    .nombre-marca {
-        font-size: var(--font-size-xl);
-    }
-    
-    /* Botones */
-    .llamada-accion {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .boton {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    /* Secciones */
-    .seccion-destinos{
-        padding: var(--spacing-2xl) 0;
-    }
-    
+
+    .titulo-inicio,
+    .titulo-inicio-plan,
     .titulo-seccion {
-        font-size: var(--font-size-3xl);
+        font-size: var(--font-size-4xl);
     }
-    
-    .subtitulo-seccion {
+
+    .subtitulo-inicio,
+    .subtitulo-seccion,
+    .encabezado-plan p {
         font-size: var(--font-size-base);
     }
-    
-    /* Grid de destinos */
+
+    .llamada-accion {
+        width: min(420px, 100%);
+    }
+
+    .llamada-accion .boton {
+        width: 100%;
+    }
+
+    .decoracion-inicio {
+        width: 320px;
+        height: 320px;
+    }
+
+    .seccion-personalizado {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+
+    .encabezado-plan {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .intro-personalizado h3 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .beneficio-card {
+        min-height: 0;
+    }
+
+    .metricas-personalizado {
+        padding: var(--spacing-lg);
+    }
+
     .cuadricula-destinos {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
-    
-    /* Tarjetas de destino */
+
     .tarjeta-destino {
-        max-height: none;
-    }
-    
-    .imagen-tarjeta {
-        height: 150px;
-    }
-    
-    .contenido-tarjeta {
-        height: auto;
-        min-height: 110px;
-        flex-direction: column;
-        gap: var(--spacing-md);
-    }
-    
-    .contenido-tarjeta h3 {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: var(--spacing-sm);
-    }
-    
-    .precio {
+        max-width: 520px;
         width: 100%;
-        text-align: center;
+        margin: 0 auto;
     }
-    
-    /* Footer */
+
     .contenido-pie-pagina {
         grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
         text-align: center;
     }
-    
+
     .marca-pie-pagina {
         align-items: center;
         text-align: center;
     }
-    
+
+    .enlaces-pie-pagina ul,
     .enlaces-sociales {
+        align-items: center;
         justify-content: center;
     }
-    
-    .enlaces-pie-pagina ul,
-    .enlaces-pie-pagina,
-    .social-pie-pagina {
-        text-align: center;
-    }
-    
-    /* Container */
-    .contenedor {
-        padding: 0 var(--spacing-md);
-    }
 }
 
-/* ========== TABLET (768px+) ========== */
-@media (min-width: 641px) and (max-width: 768px) {
+/* ========== MOVIL ========== */
+@media (max-width: 640px) {
     html {
-        font-size: 15px;
+        font-size: 14px;
     }
-    
-    .titulo-inicio {
-        font-size: var(--font-size-5xl);
+
+    body {
+        min-width: 320px;
     }
-    
-    .cuadricula-destinos {
-        grid-template-columns: repeat(2, 1fr);
+
+    h1 { font-size: var(--font-size-4xl); }
+    h2 { font-size: var(--font-size-3xl); }
+    h3 { font-size: var(--font-size-2xl); }
+
+    .barra-navegacion {
+        position: sticky;
     }
-    
+
+    .contenedor-navegacion {
+        min-height: 58px;
+        gap: var(--spacing-sm);
+    }
+
+    .logotipo {
+        width: 40px;
+    }
+
+    .logotipo-movil {
+        width: 70px;
+    }
+
+    .acciones-usuario {
+        width: auto;
+    }
+
+    .boton-iniciar-sesion,
+    .boton-registrarse {
+        display: none;
+    }
+
+    .acciones-menu-movil .boton-iniciar-sesion,
+    .acciones-menu-movil .boton-registrarse {
+        display: inline-flex;
+    }
+
+    .boton-carrito,
+    .boton-hamburguesa {
+        width: 40px;
+        height: 40px;
+    }
+
     .menu-navegacion {
+        top: 123px;
+        grid-template-columns: 1fr;
+        max-height: calc(100vh - 123px);
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .acciones-menu-movil {
+        flex-direction: column;
+    }
+
+    .entrada-busqueda {
+        min-height: 44px;
+        font-size: var(--font-size-base);
+    }
+
+    .seccion-inicio {
+        min-height: calc(100vh - 123px);
+        padding: var(--spacing-xl) 0;
+    }
+
+    .seccion-inicio::before {
+        opacity: 0.5;
+        background-position: center;
+        transform: scale(1.14) translateY(0);
+    }
+
+    .contenido-inicio {
+        width: 100%;
+        max-width: 460px;
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .titulo-inicio {
+        font-size: var(--font-size-4xl);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .subtitulo-inicio {
+        margin-bottom: var(--spacing-xl);
+        line-height: var(--line-height-normal);
+    }
+
+    .llamada-accion {
+        flex-direction: column;
         gap: var(--spacing-md);
     }
-    
-    .entrada-busqueda {
-        width: 200px;
-    }
-}
 
-/* ========== DESKTOP (1024px+) ========== */
-@media (min-width: 1024px) {
-    /* Efectos hover mejorados para desktop */
-    .tarjeta-destino:hover .imagen-tarjeta {
-        transform: scale(1.05);
+    .boton {
+        width: 100%;
+        min-height: 46px;
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
-    
+
+    .acciones-usuario .boton-carrito {
+        width: 40px;
+        min-height: 40px;
+        padding: 0;
+    }
+
+    .decoracion-inicio {
+        width: 250px;
+        height: 250px;
+    }
+
+    .seccion-personalizado,
+    .seccion-destinos {
+        padding-top: var(--spacing-2xl);
+        padding-bottom: var(--spacing-2xl);
+    }
+
+    .contenedor-personalizado {
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius-lg);
+    }
+
+    .titulo-inicio-plan,
+    .titulo-seccion {
+        font-size: var(--font-size-3xl);
+    }
+
+    .intro-personalizado {
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .intro-personalizado h3 {
+        font-size: var(--font-size-xl);
+    }
+
+    .intro-personalizado p,
+    .beneficio-card p {
+        line-height: 1.6;
+    }
+
+    .beneficios-personalizado,
+    .metricas-personalizado {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .beneficios-personalizado {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .beneficio-card {
+        padding: var(--spacing-md);
+    }
+
+    .metricas-personalizado::before {
+        height: 100px;
+        opacity: 0.24;
+        background-size: 100px 70px;
+    }
+
+    .subtitulo-seccion {
+        margin-bottom: var(--spacing-xl);
+    }
+
     .imagen-tarjeta {
-        transition: transform var(--transition-base);
+        height: 150px;
     }
-    
-    /* Navegación con efectos */
-    .menu-navegacion {
-        gap: var(--spacing-xl);
+
+    .contenido-tarjeta {
+        min-height: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
     }
-    
-    /* Hero más espacioso */
-    .seccion-inicio {
-        min-height: 95vh;
+
+    .contenido-tarjeta h3 {
+        font-size: var(--font-size-lg);
+        margin: 0;
+    }
+
+    .contenido-tarjeta > div {
+        flex: none;
+    }
+
+    .contenido-tarjeta p {
+        margin-top: var(--spacing-xs);
+        font-size: var(--font-size-sm);
+    }
+
+    .precio {
+        width: 100%;
+        flex: none;
+        font-size: var(--font-size-base);
+    }
+
+    .pie-pagina {
+        margin-top: var(--spacing-2xl);
+        padding-top: var(--spacing-2xl);
     }
 }
 
-/* ========== DESKTOP GRANDE (1280px+) ========== */
-@media (min-width: 1280px) {
-    .contenedor {
-        max-width: 1200px;
+/* ========== MOVIL CHICO ========== */
+@media (max-width: 430px) {
+    .contenedor,
+    .contenedor-navegacion {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
     }
-    
-    .cuadricula-destinos {
-        grid-template-columns: repeat(3, 1fr);
+
+    .logotipo {
+        width: 36px;
     }
-    
+
+    .logotipo-movil {
+        width: 62px;
+    }
+
     .titulo-inicio {
-        font-size: var(--font-size-6xl);
+        font-size: var(--font-size-3xl);
+    }
+
+    .titulo-inicio-plan,
+    .titulo-seccion {
+        font-size: var(--font-size-2xl);
+    }
+
+    .contenedor-personalizado {
+        padding: var(--spacing-md);
+    }
+
+    .enlace-navegacion {
+        min-height: 44px;
     }
 }
 
-/* ========== DESKTOP EXTRA GRANDE (1536px+) ========== */
-@media (min-width: 1536px) {
-    .contenedor {
-        max-width: 1400px;
+/* ========== MOVIL HORIZONTAL ========== */
+@media (max-height: 520px) and (orientation: landscape) {
+    .barra-navegacion {
+        position: relative;
     }
-    
-    html {
-        font-size: 18px;
+
+    .menu-navegacion {
+        position: absolute;
+        max-height: none;
     }
-}
 
-/* ========== ORIENTACIÓN ========== */
-
-/* Landscape en móviles */
-@media (max-height: 500px) and (orientation: landscape) {
     .seccion-inicio {
         min-height: 100vh;
         padding: var(--spacing-xl) 0;
     }
-    
+
     .titulo-inicio {
         font-size: var(--font-size-3xl);
         margin-bottom: var(--spacing-sm);
     }
-    
+
     .subtitulo-inicio {
         font-size: var(--font-size-sm);
         margin-bottom: var(--spacing-md);
     }
-    
+
     .llamada-accion {
-        gap: var(--spacing-md);
+        flex-direction: row;
     }
-    
-    .boton {
-        padding: var(--spacing-sm) var(--spacing-lg);
-    }
-    
-    .menu-navegacion {
-        height: calc(100vh - 60px);
-        padding: var(--spacing-lg);
+
+    .llamada-accion .boton {
+        width: auto;
     }
 }
 
-/* ========== MODO OSCURO / CLARO ========== */
+/* ========== DESKTOP GRANDE ========== */
+@media (min-width: 1280px) {
+    .contenedor {
+        max-width: 1200px;
+    }
 
-/* Si el usuario prefiere modo claro */
+    .cuadricula-destinos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1536px) {
+    .contenedor {
+        max-width: 1400px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .contenedor {
+        max-width: 1600px;
+    }
+
+    .decoracion-inicio {
+        width: 760px;
+        height: 760px;
+    }
+}
+
+/* ========== PREFERENCIAS DEL USUARIO ========== */
 @media (prefers-color-scheme: light) {
     [data-theme="auto"] {
         --bg-primary: #ffffff;
@@ -329,50 +683,12 @@
     }
 }
 
-/* ========== IMPRESIÓN ========== */
-@media print {
-    /* Ocultar elementos no necesarios */
-    .barra-navegacion,
-    .boton-hamburguesa,
-    .llamada-accion,
-    .pie-pagina,
-    .entrada-busqueda,
-    .boton-busqueda {
-        display: none !important;
-    }
-    
-    /* Ajustar colores para impresión */
-    body {
-        background: white;
-        color: black;
-    }
-    
-    .seccion-inicio,
-    .seccion-destinos {
-        background: white;
-    }
-    
-    /* Evitar saltos de página */
-    .tarjeta-destino,
-    .contenido-inicio {
-        page-break-inside: avoid;
-    }
-    
-    /* Mostrar URLs de enlaces */
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-}
-
-/* ========== ACCESIBILIDAD ========== */
-
-/* Alto contraste */
 @media (prefers-contrast: high) {
     :root {
         --border-color-primary: rgba(255, 255, 255, 0.3);
         --border-color-secondary: rgba(76, 201, 240, 0.5);
     }
-    
+
     .enlace-navegacion,
     .boton,
     .tarjeta-destino {
@@ -380,55 +696,48 @@
     }
 }
 
-/* Transparencia reducida */
 @media (prefers-reduced-transparency) {
     .barra-navegacion,
+    .menu-navegacion,
     .tarjeta-destino,
-    .entrada-busqueda {
+    .entrada-busqueda,
+    .contenedor-personalizado {
         backdrop-filter: none;
     }
-    
-    .barra-navegacion {
+
+    .barra-navegacion,
+    .menu-navegacion {
         background-color: var(--bg-secondary);
-    }
-    
-    .tarjeta-destino {
-        background-color: var(--bg-tertiary);
     }
 }
 
 /* ========== UTILIDADES RESPONSIVE ========== */
-
-/* Ocultar en móvil */
 @media (max-width: 640px) {
     .ocultar-movil {
         display: none !important;
     }
 }
 
-/* Ocultar en tablet */
 @media (min-width: 641px) and (max-width: 1023px) {
     .ocultar-tablet {
         display: none !important;
     }
 }
 
-/* Ocultar en desktop */
 @media (min-width: 1024px) {
     .ocultar-escritorio {
         display: none !important;
     }
 }
 
-/* Mostrar solo en móvil */
 @media (min-width: 641px) {
     .mostrar-solo-movil {
         display: none !important;
     }
 }
 
-/* Mostrar solo en tablet */
-.mostrar-solo-tablet {
+.mostrar-solo-tablet,
+.mostrar-solo-escritorio {
     display: none !important;
 }
 
@@ -438,118 +747,41 @@
     }
 }
 
-/* Mostrar solo en desktop */
-.mostrar-solo-escritorio {
-    display: none !important;
-}
-
 @media (min-width: 1024px) {
     .mostrar-solo-escritorio {
         display: block !important;
     }
 }
 
-/* ========== AJUSTES ESPECÍFICOS PARA DISPOSITIVOS ========== */
-
-/* iPhone SE y dispositivos pequeños */
-@media (max-width: 375px) {
-    .titulo-inicio {
-        font-size: var(--font-size-3xl);
-    }
-    
-    .logotipo {
-        width: 40px;
-    }
-    
-    .nombre-marca {
-        font-size: var(--font-size-lg);
-    }
-    
-    .boton {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: var(--font-size-sm);
-    }
-}
-
-/* iPad y tablets */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .contenedor-navegacion {
-        padding: 0 var(--spacing-xl);
-    }
-    
-    .cuadricula-destinos {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-xl);
-    }
-}
-
-/* Pantallas ultra anchas */
-@media (min-width: 1920px) {
-    .contenedor {
-        max-width: 1600px;
-    }
-    
-    .decoracion-inicio {
-        width: 800px;
-        height: 800px;
-    }
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-    .beneficios-personalizado {
-        grid-template-columns: repeat(2, 1fr);
+/* ========== IMPRESION ========== */
+@media print {
+    .barra-navegacion,
+    .boton-hamburguesa,
+    .llamada-accion,
+    .pie-pagina,
+    .entrada-busqueda,
+    .boton-busqueda {
+        display: none !important;
     }
 
-    .metricas-personalizado {
-        grid-template-columns: repeat(2, 1fr);
+    body {
+        background: white;
+        color: black;
     }
 
-    .intro-personalizado {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 576px) {
+    .seccion-inicio,
+    .seccion-destinos,
     .seccion-personalizado {
-        padding: var(--spacing-3xl) var(--spacing-md);
+        background: white;
     }
 
+    .tarjeta-destino,
+    .contenido-inicio,
     .contenedor-personalizado {
-        padding: var(--spacing-lg);
+        page-break-inside: avoid;
     }
 
-    .titulo-inicio-plan {
-        font-size: var(--font-size-3xl);
-    }
-
-    .intro-personalizado h3 {
-        font-size: var(--font-size-2xl);
-    }
-
-    .beneficios-personalizado,
-    .metricas-personalizado {
-        grid-template-columns: 1fr;
-    }
-
-    .boton {
-        width: 100%;
-    }
-    
-    /* Optimizaciones adicionales para pantallas muy pequeñas */
-    .intro-personalizado {
-        gap: var(--spacing-md);
-    }
-    
-    .beneficio-card {
-        min-height: auto;
-        padding: var(--spacing-md);
-    }
-    
-    .metricas-personalizado::before {
-        opacity: 0.25;
-        height: 100px;
-        background-size: 100px 70px;
+    a[href]::after {
+        content: " (" attr(href) ")";
     }
 }

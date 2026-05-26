@@ -7,7 +7,80 @@ const botonHamburguesa = document.querySelector('.boton-hamburguesa');
 const menuNavegacion = document.querySelector('.menu-navegacion');
 const enlacesNavegacion = document.querySelectorAll('.enlace-navegacion');
 const entradaBusqueda = document.querySelector('.entrada-busqueda');
+// Variables para usuario
+const botonCarrito = document.querySelector('.boton-carrito');
+const notificacionCarrito = document.querySelector('.notificacion-carrito');
+const botonesIniciarSesion = document.querySelectorAll('.boton-iniciar-sesion');
+const botonesRegistrarse = document.querySelectorAll('.boton-registrarse');
+let navegacionManualActiva = false;
+let temporizadorNavegacionManual;
 
+// ========== CARRITO DE COMPRAS ==========
+
+/**
+ * Obtener cantidad de artículos en el carrito
+ */
+function obtenerCantidadCarrito() {
+    return localStorage.getItem('cantidadCarrito') || '0';
+}
+
+/**
+ * Actualizar notificación del carrito
+ */
+function actualizarNotificacionCarrito() {
+    const cantidad = obtenerCantidadCarrito();
+    if (notificacionCarrito) {
+        notificacionCarrito.textContent = cantidad;
+        const carritoVacio = cantidad === '0';
+        notificacionCarrito.style.display = carritoVacio ? 'none' : 'flex';
+        notificacionCarrito.setAttribute('aria-hidden', carritoVacio ? 'true' : 'false');
+    }
+}
+
+/**
+ * Agregar artículo al carrito
+ */
+function agregarAlCarrito() {
+    let cantidad = parseInt(obtenerCantidadCarrito());
+    cantidad++;
+    localStorage.setItem('cantidadCarrito', cantidad);
+    actualizarNotificacionCarrito();
+}
+
+/**
+ * Manejar click en botón del carrito
+ */
+if (botonCarrito) {
+    botonCarrito.addEventListener('click', () => {
+        console.log('Carrito de compras - Cantidad:', obtenerCantidadCarrito());
+        // Aquí implementar navegación a página del carrito o mostrar modal
+        // window.location.href = '/carrito';
+    });
+}
+
+// ========== AUTENTICACIÓN DE USUARIO ==========
+
+/**
+ * Manejar click en botón Iniciar Sesión
+ */
+botonesIniciarSesion.forEach(botonIniciarSesion => {
+    botonIniciarSesion.addEventListener('click', () => {
+        console.log('Iniciar sesión');
+        // Aquí implementar modal o navegación a página de login
+        // window.location.href = '/login';
+    });
+});
+
+/**
+ * Manejar click en botón Registrarse
+ */
+botonesRegistrarse.forEach(botonRegistrarse => {
+    botonRegistrarse.addEventListener('click', () => {
+        console.log('Registrarse');
+        // Aquí implementar modal o navegación a página de registro
+        // window.location.href = '/registro';
+    });
+});
 // ========== NAVEGACIÓN MÓVIL ==========
 
 /**
@@ -51,25 +124,42 @@ document.addEventListener('click', (e) => {
 // ========== NAVEGACIÓN ACTIVA ==========
 
 /**
+ * Marcar un único enlace como activo
+ */
+function establecerEnlaceActivo(enlaceActivo) {
+    enlacesNavegacion.forEach(link => link.classList.remove('activo'));
+
+    if (enlaceActivo) {
+        enlaceActivo.classList.add('activo');
+    }
+}
+
+/**
  * Actualizar enlace activo según la sección visible
  */
 function actualizarEnlaceActivo() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.pageYOffset;
+    if (navegacionManualActiva) {
+        return;
+    }
 
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        const correspondingLink = document.querySelector(`.enlace-navegacion[href="#${sectionId}"]`);
+    const navbar = document.querySelector('.barra-navegacion');
+    const offsetNavbar = navbar ? navbar.offsetHeight : 0;
+    const posicionActual = window.pageYOffset + offsetNavbar + 80;
+    let enlaceActivo = null;
 
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            enlacesNavegacion.forEach(link => link.classList.remove('activo'));
-            if (correspondingLink) {
-                correspondingLink.classList.add('activo');
+    enlacesNavegacion.forEach(link => {
+        const href = link.getAttribute('href');
+
+        if (href && href.startsWith('#')) {
+            const seccion = document.getElementById(href.substring(1));
+
+            if (seccion && seccion.offsetTop <= posicionActual) {
+                enlaceActivo = link;
             }
         }
     });
+
+    establecerEnlaceActivo(enlaceActivo || enlacesNavegacion[0]);
 }
 
 // ========== SCROLL SUAVE ==========
@@ -87,6 +177,22 @@ enlacesNavegacion.forEach(link => {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
+                establecerEnlaceActivo(link);
+                navegacionManualActiva = true;
+                clearTimeout(temporizadorNavegacionManual);
+
+                const finalizarNavegacionManual = () => {
+                    clearTimeout(temporizadorNavegacionManual);
+                    navegacionManualActiva = false;
+                    actualizarEnlaceActivo();
+                };
+
+                if ('onscrollend' in window) {
+                    window.addEventListener('scrollend', finalizarNavegacionManual, { once: true });
+                }
+
+                temporizadorNavegacionManual = setTimeout(finalizarNavegacionManual, 1400);
+
                 const offsetTop = targetSection.offsetTop - 70;
                 window.scrollTo({
                     top: offsetTop,
@@ -333,6 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inicializarBotonesCTA();
     inicializarCargaPerezosa();
     inicializarCambioTema();
+    actualizarNotificacionCarrito();
     
     // Ejecutar funciones iniciales
     actualizarEnlaceActivo();

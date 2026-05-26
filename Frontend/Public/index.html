@@ -36,9 +36,13 @@
             
             <ul class="menu-navegacion">
                 <li class="elemento-menu"><a href="#inicio" class="enlace-navegacion activo">Inicio</a></li>
-                <li class="elemento-menu"><a href="#destinos" class="enlace-navegacion">Planes</a></li>
+                <li class="elemento-menu"><a href="#planes-populares" class="enlace-navegacion">Planes</a></li>
                 <li class="elemento-menu"><a href="#ofertas" class="enlace-navegacion">Ofertas</a></li>
                 <li class="elemento-menu"><a href="#contacto" class="enlace-navegacion">Contacto</a></li>
+                <li class="acciones-menu-movil">
+                    <button class="boton boton-iniciar-sesion" aria-label="Iniciar sesión">Iniciar Sesión</button>
+                    <button class="boton boton-registrarse" aria-label="Registrarse">Registrarse</button>
+                </li>
             </ul>
             
             <div class="busqueda-navegacion">
@@ -49,6 +53,20 @@
                         <path d="m21 21-4.35-4.35"></path>
                     </svg>
                 </button>
+            </div>
+
+            <!-- Acciones de Usuario y Carrito -->
+            <div class="acciones-usuario">
+                <button class="boton boton-carrito" aria-label="Carrito de compras">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="notificacion-carrito" aria-hidden="true"></span>
+                </button>
+                <button class="boton boton-iniciar-sesion" aria-label="Iniciar sesión">Iniciar Sesión</button>
+                <button class="boton boton-registrarse" aria-label="Registrarse">Registrarse</button>
             </div>
             
             <!-- Botón hamburguesa para móvil -->
@@ -165,9 +183,10 @@
                 <article class="tarjeta-destino">
                     <div class="imagen-tarjeta"></div>
                     <div class="contenido-tarjeta">
-                        <h3>París, Francia 
+                        <div>
+                            <h3>París, Francia</h3>
                             <p>La ciudad del amor y la luz</p>
-                        </h3>
+                        </div>
                         <span class="precio">Desde $899</span>
                     </div>
                 </article>
@@ -175,9 +194,10 @@
                 <article class="tarjeta-destino">
                     <div class="imagen-tarjeta"></div>
                     <div class="contenido-tarjeta">
-                        <h3>Tokio, Japón 
+                        <div>
+                            <h3>Tokio, Japón</h3>
                             <p>Tradición y modernidad</p>
-                        </h3>
+                        </div>
                         <span class="precio">Desde $1,299</span>
                     </div>
                 </article>
@@ -185,9 +205,10 @@
                 <article class="tarjeta-destino">
                     <div class="imagen-tarjeta"></div>
                     <div class="contenido-tarjeta">
-                        <h3>Nueva York, USA
+                        <div>
+                            <h3>Nueva York, USA</h3>
                             <p>La ciudad que nunca duerme</p>
-                        </h3>
+                        </div>
                         <span class="precio">Desde $799</span>
                     </div>
                 </article>
@@ -207,7 +228,7 @@
                     <h4>Enlaces Rápidos</h4>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#destinos">Planes</a></li>
+                        <li><a href="#planes-populares">Planes</a></li>
                         <li><a href="#ofertas">Ofertas</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>

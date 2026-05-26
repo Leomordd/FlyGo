@@ -72,16 +72,17 @@ a:hover {
     top: 0;
     z-index: var(--z-sticky);
     backdrop-filter: blur(var(--blur-md));
+    width: 100%;
 }
 
 .contenedor-navegacion {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
+    max-width: 100%;
     padding: 0 var(--container-padding);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: var(--spacing-xl);
+    flex-wrap: nowrap;
 }
 
 .marca-navegacion {
@@ -113,6 +114,10 @@ a:hover {
     align-items: center;
 }
 
+.acciones-menu-movil {
+    display: none;
+}
+
 .elemento-menu {
     position: relative;
 }
@@ -125,7 +130,10 @@ a:hover {
     border-radius: var(--border-radius-md);
     transition: all var(--transition-base);
     position: relative;
-    text-select: none;
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    user-select: none;
 }
 
 .enlace-navegacion:hover {
@@ -135,16 +143,17 @@ a:hover {
 
 .enlace-navegacion.activo {
     color: var(--color-primary);
+    background-color: rgba(76, 201, 240, 0.08);
 }
 
 .enlace-navegacion.activo::after {
     content: '';
     position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
+    bottom: 4px;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
     height: 2px;
+    border-radius: var(--border-radius-full);
     background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
 }
 
@@ -203,6 +212,77 @@ a:hover {
     color: var(--color-primary);
 }
 
+/* ========== ACCIONES DE USUARIO ========== */
+.acciones-usuario {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.boton-carrito {
+    position: relative;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-base);
+}
+
+.boton-carrito:hover {
+    color: var(--color-primary);
+    background: rgba(76, 201, 240, 0.1);
+}
+
+.notificacion-carrito {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--color-accent);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+}
+
+.boton-iniciar-sesion {
+    background: transparent;
+    color: var(--text-primary);
+    border: var(--border-width-medium) solid var(--border-color-accent);
+    padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.boton-iniciar-sesion:hover {
+    background: rgba(76, 201, 240, 0.1);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.boton-registrarse {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.boton-registrarse:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.boton-registrarse:active {
+    transform: translateY(0);
+}
+
 /* Botón Hamburguesa (Móvil) */
 .boton-hamburguesa {
     display: none;
@@ -245,7 +325,7 @@ a:hover {
     content: "";
     position: absolute;
     inset: 0; 
-    opacity: 0.35; 
+    opacity: 0.3; 
     pointer-events: none;
     
     background-image: url("../Assets/Img/transreal.png");
@@ -301,6 +381,7 @@ a:hover {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-2xl);
     line-height: var(--line-height-relaxed);
+    text-shadow: 0px 0px 12px rgba(0, 0, 0);
 }
 
 .llamada-accion {
@@ -317,7 +398,7 @@ a:hover {
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(76, 201, 240, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(76, 201, 240, 0.45) 0%, transparent 55%);
     border-radius: 50%;
     z-index: 1;
     animation: pulse 4s ease-in-out infinite;
@@ -628,20 +709,21 @@ a:hover {
     padding: var(--spacing-lg);
 }
 
+.contenido-tarjeta > div {
+    flex: 2;
+}
+
 .contenido-tarjeta h3 {
     text-align: left;
     font-size: var(--font-size-xl);
     color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
-    display: flex;
-    flex-direction: column;
-    flex: 2;
 }
 
 .contenido-tarjeta p {
     font-size: var(--font-size-base);
     color: var(--text-secondary);
-    margin-top: var(--spacing-md);
+    margin: 0;
 }
 
 .precio {
