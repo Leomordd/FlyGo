@@ -703,8 +703,8 @@ a:hover {
     min-height: 130px;
     display: flex;
     flex-direction: row;
-    gap: var(--spacing-lg); 
     justify-content: center;
+    gap: var(--spacing-lg); 
     align-items: flex-start;
     padding: var(--spacing-lg);
 }
@@ -720,7 +720,8 @@ a:hover {
     margin-bottom: var(--spacing-sm);
 }
 
-.contenido-tarjeta p {
+.contenido-tarjeta p {  
+    text-align: left;      
     font-size: var(--font-size-base);
     color: var(--text-secondary);
     margin: 0;

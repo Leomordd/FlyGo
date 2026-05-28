@@ -1,4 +1,5 @@
 import useCart from '../hooks/useCart.js';
+import { Link } from 'react-router-dom';
 
 export default function Cart() {
     const { items, removeItem, totalPrice, clearCart } = useCart();
@@ -27,7 +28,7 @@ export default function Cart() {
                         ))}
                         <div className="resumen-carrito">
                             <strong>Total: ${totalPrice}</strong>
-                            <button className="boton boton-primario">Continuar compra</button>
+                            <Link className="boton boton-primario" to="/login">Continuar compra</Link>
                             <button className="boton boton-secundario" onClick={clearCart}>Vaciar</button>
                         </div>
                     </div>

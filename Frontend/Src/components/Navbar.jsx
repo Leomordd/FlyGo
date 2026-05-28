@@ -1,12 +1,23 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import useCart from '../hooks/useCart.js';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
     const { totalItems } = useCart();
+    const navigate = useNavigate();
 
     const closeMenu = () => setIsMenuOpen(false);
+    const handleSearch = (event) => {
+        event.preventDefault();
+        const query = searchTerm.trim();
+
+        if (query) {
+            navigate(`/buscar?q=${encodeURIComponent(query)}`);
+            closeMenu();
+        }
+    };
 
     return (
         <nav className="barra-navegacion">
@@ -29,21 +40,31 @@ export default function Navbar() {
                     <li className="elemento-menu">
                         <NavLink className={({ isActive }) => `enlace-navegacion ${isActive ? 'activo' : ''}`} to="/plan-personalizado" onClick={closeMenu}>Plan</NavLink>
                     </li>
+                    <li className="elemento-menu">
+                        <NavLink className={({ isActive }) => `enlace-navegacion ${isActive ? 'activo' : ''}`} to="/documentacion" onClick={closeMenu}>Docs</NavLink>
+                    </li>
                     <li className="acciones-menu-movil">
                         <Link className="boton boton-iniciar-sesion" to="/login" onClick={closeMenu}>Iniciar Sesion</Link>
                         <Link className="boton boton-registrarse" to="/registro" onClick={closeMenu}>Registrarse</Link>
                     </li>
                 </ul>
 
-                <div className="busqueda-navegacion">
-                    <input className="entrada-busqueda" type="text" placeholder="Buscar destinos..." aria-label="Buscar destinos" />
+                <form className="busqueda-navegacion" onSubmit={handleSearch}>
+                    <input
+                        className="entrada-busqueda"
+                        type="search"
+                        placeholder="Buscar destinos..."
+                        aria-label="Buscar destinos"
+                        value={searchTerm}
+                        onChange={(event) => setSearchTerm(event.target.value)}
+                    />
                     <button className="boton-busqueda" aria-label="Buscar">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
                         </svg>
                     </button>
-                </div>
+                </form>
 
                 <div className="acciones-usuario">
                     <Link className="boton boton-carrito" to="/carrito" aria-label="Carrito de compras">

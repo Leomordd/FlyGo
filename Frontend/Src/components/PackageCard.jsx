@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import useCart from '../hooks/useCart.js';
 
 export default function PackageCard({ packageItem }) {
@@ -17,7 +18,7 @@ export default function PackageCard({ packageItem }) {
                 <span className="precio">Desde ${packageItem.price}</span>
             </div>
             <div className="paquete-card__acciones">
-                <button className="boton boton-secundario">Ver detalle</button>
+                <Link className="boton boton-secundario" to={`/planes/${packageItem.id}`}>Ver detalle</Link>
                 <button className="boton boton-primario" onClick={() => addItem(packageItem)}>Agregar</button>
             </div>
         </article>

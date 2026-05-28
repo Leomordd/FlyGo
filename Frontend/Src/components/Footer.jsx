@@ -16,6 +16,7 @@ export default function Footer() {
                             <li><Link to="/planes">Planes</Link></li>
                             <li><Link to="/ofertas">Ofertas</Link></li>
                             <li><Link to="/plan-personalizado">Plan personalizado</Link></li>
+                            <li><Link to="/documentacion">Documentacion</Link></li>
                         </ul>
                     </div>
                     <div className="social-pie-pagina">
