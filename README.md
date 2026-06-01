@@ -1,4 +1,4 @@
-# ✈️ Travel Agency
+# ✈️ ¨[Repositorio]
 
 Aplicación web de gestión de viajes desarrollada con React, Node.js y PostgreSQL.
 
@@ -29,4 +29,4 @@ Aplicación web de gestión de viajes desarrollada con React, Node.js y PostgreS
 1. Clonar el repositorio
 
 ```bash
-git clone [repositorio](https://github.com/Nico00o/FlyGo)
+git clone https://github.com/Nico00o/FlyGo
