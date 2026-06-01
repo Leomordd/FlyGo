@@ -1,12 +1,28 @@
 import { Link } from 'react-router-dom';
+import logoIcon from '../Assets/icon/logotipo (1).png';
 
 export default function Footer() {
+    const docs = [
+        {
+            title: 'Frontend',
+            text: 'React + Vite con rutas en Src/routes/AppRoutes.jsx y vistas en Src/pages.'
+        },
+        {
+            title: 'Datos',
+            text: 'Los paquetes viven en Src/data/packages.js hasta conectar backend y base de datos.'
+        },
+        {
+            title: 'Estado',
+            text: 'CartContext maneja carrito y AuthContext centraliza la sesion simulada.'
+        }
+    ];
+
     return (
         <footer className="pie-pagina">
             <div className="contenedor">
                 <div className="contenido-pie-pagina">
                     <div className="marca-pie-pagina">
-                        <img src="/Src/Assets/icon/logotipo%20(1).png" alt="Logotipo de FlyGo" className="logotipo-pie-pagina" />
+                        <img src={logoIcon} alt="Logotipo de FlyGo" className="logotipo-pie-pagina" />
                         <p>Tu companero de viajes perfecto</p>
                     </div>
                     <div className="enlaces-pie-pagina">
@@ -28,6 +44,22 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
+                <section className="documentacion-footer" aria-labelledby="documentacion-footer-titulo">
+                    <div>
+                        <span className="etiqueta-plan">Documentacion</span>
+                        <h3 id="documentacion-footer-titulo">Mapa tecnico del sitio</h3>
+                        <p>Resumen rapido para entender y seguir desarrollando FlyGo.</p>
+                    </div>
+                    <div className="documentacion-footer__grid">
+                        {docs.map((item) => (
+                            <article key={item.title}>
+                                <strong>{item.title}</strong>
+                                <p>{item.text}</p>
+                            </article>
+                        ))}
+                    </div>
+                    <Link className="boton boton-secundario" to="/documentacion">Ver documentacion completa</Link>
+                </section>
                 <div className="pie-inferior">
                     <p>&copy; 2026 FlyGo. Todos los derechos reservados.</p>
                 </div>

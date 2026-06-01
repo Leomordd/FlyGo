@@ -1,6 +1,8 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import useCart from '../hooks/useCart.js';
+import logoIcon from '../Assets/icon/logotipo (1).png';
+import logoText from '../Assets/icon/logotexto.png';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,8 +25,8 @@ export default function Navbar() {
         <nav className="barra-navegacion">
             <div className="contenedor-navegacion">
                 <Link className="marca-navegacion" to="/" onClick={closeMenu}>
-                    <img src="/Src/Assets/icon/logotipo%20(1).png" alt="Logotipo de FlyGo" className="logotipo" />
-                    <img src="/Src/Assets/icon/logotexto.png" alt="FlyGo" className="logotipo-movil" />
+                    <img src={logoIcon} alt="Logotipo de FlyGo" className="logotipo" />
+                    <img src={logoText} alt="FlyGo" className="logotipo-movil" />
                 </Link>
 
                 <ul className={`menu-navegacion ${isMenuOpen ? 'activo' : ''}`}>

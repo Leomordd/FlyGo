@@ -9,6 +9,7 @@ export default function Home() {
         <>
             <section className="seccion-inicio">
                 <div className="contenido-inicio">
+                    <span className="hero-badge">Agencia digital de viajes</span>
                     <h1 className="titulo-inicio">Descubre el Mundo con FlyGo</h1>
                     <p className="subtitulo-inicio">Encuentra los mejores destinos y ofertas para tu proxima aventura</p>
                     <div className="llamada-accion">

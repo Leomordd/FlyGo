@@ -165,6 +165,35 @@
     }
 }
 
+@keyframes deriva-ambiente {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(5vw, -4vh, 0) scale(1.14);
+    }
+}
+
+@keyframes hero-zoom {
+    from {
+        transform: scale(1.08) translateY(10px);
+    }
+    to {
+        transform: scale(1.14) translateY(-8px);
+    }
+}
+
+@keyframes orbita-suave {
+    0%, 100% {
+        margin-left: -18px;
+        margin-top: 0;
+    }
+    50% {
+        margin-left: 18px;
+        margin-top: -12px;
+    }
+}
+
 /* ========== CLASES DE UTILIDAD PARA ANIMACIONES ========== */
 
 /* Fade In */
@@ -365,13 +394,15 @@
 /* Fade in cuando entra en viewport (requiere JavaScript) */
 .revelacion-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(34px) scale(0.985);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
+    filter: blur(8px);
 }
 
 .revelacion-scroll.revelado {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
 }
 
 /* ========== PREFERENCIAS DE MOVIMIENTO REDUCIDO ========== */

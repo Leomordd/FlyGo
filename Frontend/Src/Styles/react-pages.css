@@ -68,6 +68,20 @@
 .panel-ofertas div {
     padding: var(--spacing-lg);
     text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.panel-ofertas div:hover,
+.docs-card:hover,
+.detalle-paquete__grid article:hover,
+.resultado-plan:hover,
+.item-carrito:hover,
+.auth-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-color-accent);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
 .panel-ofertas strong {
@@ -194,6 +208,7 @@
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-md);
     backdrop-filter: blur(var(--blur-md));
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .resultado-plan {
@@ -294,6 +309,8 @@
 
 .docs-card {
     text-align: left;
+    position: relative;
+    overflow: hidden;
 }
 
 .docs-card--full {

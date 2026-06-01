@@ -235,6 +235,14 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: var(--spacing-xl);
     }
+
+    .documentacion-footer {
+        grid-template-columns: 1fr;
+    }
+
+    .documentacion-footer .boton {
+        justify-self: start;
+    }
 }
 
 /* ========== TABLET PEQUENA ========== */
@@ -266,6 +274,7 @@
         order: 4;
         flex: 1 0 100%;
         max-width: none;
+        min-width: 0;
     }
 
     .menu-navegacion {
@@ -354,6 +363,19 @@
         text-align: center;
     }
 
+    .documentacion-footer,
+    .documentacion-footer__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .documentacion-footer {
+        text-align: center;
+    }
+
+    .documentacion-footer .boton {
+        justify-self: stretch;
+    }
+
     .marca-pie-pagina {
         align-items: center;
         text-align: center;
@@ -431,6 +453,7 @@
     .entrada-busqueda {
         min-height: 44px;
         font-size: var(--font-size-base);
+        min-width: 0;
     }
 
     .seccion-inicio {

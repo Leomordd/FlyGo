@@ -25,6 +25,62 @@ body {
     overflow-x: hidden;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 72%);
+    z-index: -2;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+.ambiente-sitio {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -3;
+}
+
+.ambiente-sitio span {
+    position: absolute;
+    width: 42vw;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.2;
+    animation: deriva-ambiente 18s ease-in-out infinite;
+}
+
+.ambiente-sitio span:nth-child(1) {
+    top: -12%;
+    left: -10%;
+    background: #4cc9f0;
+}
+
+.ambiente-sitio span:nth-child(2) {
+    right: -12%;
+    top: 24%;
+    background: #f72585;
+    animation-delay: -6s;
+}
+
+.ambiente-sitio span:nth-child(3) {
+    left: 28%;
+    bottom: -24%;
+    background: #10b981;
+    animation-delay: -11s;
+}
+
 /* ========== TIPOGRAFÍA ========== */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-heading);
@@ -65,7 +121,7 @@ a:hover {
 
 /* ========== NAVEGACIÓN ========== */
 .barra-navegacion {
-    background-color: var(--bg-secondary);
+    background: rgba(12, 14, 19, 0.78);
     border-bottom: var(--border-width-thin) solid var(--border-color-primary);
     padding: var(--spacing-md) 0;
     position: sticky;
@@ -134,11 +190,25 @@ a:hover {
     align-items: center;
     min-height: 40px;
     user-select: none;
+    overflow: hidden;
+}
+
+.enlace-navegacion::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    transform: translateX(-140%);
+    transition: transform 650ms ease;
 }
 
 .enlace-navegacion:hover {
     color: var(--text-primary);
     background-color: rgba(76, 201, 240, 0.1);
+}
+
+.enlace-navegacion:hover::before {
+    transform: translateX(140%);
 }
 
 .enlace-navegacion.activo {
@@ -325,7 +395,7 @@ a:hover {
     content: "";
     position: absolute;
     inset: 0; 
-    opacity: 0.3; 
+    opacity: 0.45; 
     pointer-events: none;
     
     background-image: url("../Assets/Img/transreal.png");
@@ -335,7 +405,8 @@ a:hover {
     background-attachment: fixed;
     
     /* Escalamos un poco para que al bajar 10px no se vea el fondo de atrás */
-    transform: scale(1.05) translateY(10px); 
+    transform: scale(1.08) translateY(10px); 
+    animation: hero-zoom 18s ease-in-out infinite alternate;
     
     z-index: 1;
 }
@@ -353,6 +424,29 @@ a:hover {
     );
     
     z-index: 2; /* Capa media (Gradiente sobre el fondo) */
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md);
+    color: var(--text-primary);
+    background: rgba(76, 201, 240, 0.1);
+    border: var(--border-width-thin) solid var(--border-color-accent);
+    border-radius: var(--border-radius-full);
+    box-shadow: inset 0 0 24px rgba(76, 201, 240, 0.08);
+    animation: fadeInDown 0.9s ease-out both;
+}
+
+.hero-badge::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 16px var(--color-success);
 }
 .contenido-inicio {
     text-align: center;
@@ -401,7 +495,7 @@ a:hover {
     background: radial-gradient(circle, rgba(76, 201, 240, 0.45) 0%, transparent 55%);
     border-radius: 50%;
     z-index: 1;
-    animation: pulse 4s ease-in-out infinite;
+    animation: pulse 4s ease-in-out infinite, orbita-suave 12s ease-in-out infinite;
 }
 
 /* ========== BOTONES ========== */
@@ -418,6 +512,24 @@ a:hover {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.boton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.18) 50%, transparent 100%);
+    transform: translateX(-130%);
+    transition: transform 700ms ease;
+}
+
+.boton:hover::after {
+    transform: translateX(130%);
 }
 
 .boton-primario {
@@ -506,12 +618,28 @@ a:hover {
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(var(--blur-md));
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.contenedor-personalizado::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(76, 201, 240, 0.12), transparent 38%, rgba(16, 185, 129, 0.08));
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    pointer-events: none;
 }
 
 .contenedor-personalizado:hover {
     transform: translateY(-6px);
     border-color: var(--border-color-accent);
     box-shadow: var(--shadow-xl), var(--shadow-glow);
+}
+
+.contenedor-personalizado:hover::before {
+    opacity: 1;
 }
 
 .intro-personalizado {
@@ -560,11 +688,34 @@ a:hover {
     border: var(--border-width-thin) solid var(--border-color-primary);
     border-radius: var(--border-radius-lg);
     transition: transform var(--transition-base), border-color var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.beneficio-card::after,
+.tarjeta-destino::after,
+.docs-card::after,
+.panel-ofertas div::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-success));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-slow);
 }
 
 .beneficio-card:hover {
     transform: translateY(-4px);
     border-color: var(--border-color-accent);
+}
+
+.beneficio-card:hover::after,
+.tarjeta-destino:hover::after,
+.docs-card:hover::after,
+.panel-ofertas div:hover::after {
+    transform: scaleX(1);
 }
 
 .beneficio-card span {
@@ -683,10 +834,12 @@ a:hover {
     overflow: hidden;
     transition: all var(--transition-base);
     backdrop-filter: blur(var(--blur-md));
+    position: relative;
+    transform-style: preserve-3d;
 }
 
 .tarjeta-destino:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px) rotateX(1.5deg);
     border-color: var(--border-color-accent);
     box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
@@ -694,8 +847,29 @@ a:hover {
 .imagen-tarjeta {
     width: 100%;
     height: 170px;
-    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    background:
+        radial-gradient(circle at 78% 22%, rgba(255, 255, 255, 0.52), transparent 12%),
+        linear-gradient(135deg, var(--color-primary-dark), var(--color-primary) 52%, var(--color-success));
     position: relative;
+    overflow: hidden;
+}
+
+.imagen-tarjeta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../Assets/icon/avion2.svg");
+    background-repeat: no-repeat;
+    background-size: 190px auto;
+    background-position: 18% 56%;
+    opacity: 0.24;
+    transform: translateX(-18px);
+    transition: transform var(--transition-slow), opacity var(--transition-slow);
+}
+
+.tarjeta-destino:hover .imagen-tarjeta::before {
+    opacity: 0.42;
+    transform: translateX(12px) translateY(-4px);
 }
 
 .contenido-tarjeta {
@@ -742,10 +916,14 @@ a:hover {
 
 /* ========== FOOTER ========== */
 .pie-pagina {
-    background-color: var(--bg-secondary);
+    background:
+        linear-gradient(180deg, rgba(12, 14, 19, 0.88), var(--bg-secondary)),
+        radial-gradient(circle at top right, rgba(76, 201, 240, 0.16), transparent 34%);
     border-top: var(--border-width-thin) solid var(--border-color-primary);
     padding: var(--spacing-3xl) 0 var(--spacing-xl);
     margin-top: var(--spacing-4xl);
+    position: relative;
+    overflow: hidden;
 }
 
 .contenido-pie-pagina {
@@ -829,6 +1007,56 @@ a:hover {
     text-align: center;
     padding-top: var(--spacing-xl);
     border-top: var(--border-width-thin) solid var(--border-color-primary);
+}
+
+.documentacion-footer {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.5fr) auto;
+    gap: var(--spacing-lg);
+    align-items: center;
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-xl);
+    text-align: left;
+    background: rgba(21, 25, 34, 0.52);
+    border: var(--border-width-thin) solid var(--border-color-primary);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(var(--blur-md));
+}
+
+.documentacion-footer h3,
+.documentacion-footer p {
+    margin: 0;
+}
+
+.documentacion-footer h3 {
+    font-size: var(--font-size-2xl);
+}
+
+.documentacion-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-md);
+}
+
+.documentacion-footer__grid article {
+    min-height: 120px;
+    padding: var(--spacing-md);
+    background: rgba(14, 16, 21, 0.5);
+    border: var(--border-width-thin) solid var(--border-color-primary);
+    border-radius: var(--border-radius-md);
+}
+
+.documentacion-footer__grid strong {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.documentacion-footer__grid p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
 }
 
 .pie-inferior p {
