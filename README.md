@@ -1,4 +1,4 @@
-# ✈️ ¨[Repositorio]
+# ✈️ FlyGo
 
 Aplicación web de gestión de viajes desarrollada con React, Node.js y PostgreSQL.
 
