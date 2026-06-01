@@ -29,4 +29,4 @@ Aplicación web de gestión de viajes desarrollada con React, Node.js y PostgreS
 1. Clonar el repositorio
 
 ```bash
-git clone repositorio
+git clone [repositorio](https://github.com/Nico00o/FlyGo)
