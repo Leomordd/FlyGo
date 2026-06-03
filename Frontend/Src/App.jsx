@@ -8,6 +8,10 @@ export default function App() {
     const location = useLocation();
 
     useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, [location.pathname]);
+
+    useEffect(() => {
         const revealTargets = document.querySelectorAll(
             '.seccion-personalizado, .seccion-destinos, .tarjeta-destino, .beneficio-card, .docs-card, .panel-ofertas div, .resultado-plan, .detalle-paquete__grid article, .item-carrito, .auth-card'
         );

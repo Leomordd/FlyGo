@@ -42,9 +42,6 @@ export default function Navbar() {
                     <li className="elemento-menu">
                         <NavLink className={({ isActive }) => `enlace-navegacion ${isActive ? 'activo' : ''}`} to="/plan-personalizado" onClick={closeMenu}>Plan</NavLink>
                     </li>
-                    <li className="elemento-menu">
-                        <NavLink className={({ isActive }) => `enlace-navegacion ${isActive ? 'activo' : ''}`} to="/documentacion" onClick={closeMenu}>Docs</NavLink>
-                    </li>
                     <li className="acciones-menu-movil">
                         <Link className="boton boton-iniciar-sesion" to="/login" onClick={closeMenu}>Iniciar Sesion</Link>
                         <Link className="boton boton-registrarse" to="/registro" onClick={closeMenu}>Registrarse</Link>

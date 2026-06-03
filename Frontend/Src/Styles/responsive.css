@@ -560,12 +560,11 @@
     }
 
     .imagen-tarjeta {
-        height: 150px;
+        height: 190px;
     }
 
     .contenido-tarjeta {
         min-height: 0;
-        flex-direction: column;
         align-items: stretch;
         gap: var(--spacing-md);
         padding: var(--spacing-md);

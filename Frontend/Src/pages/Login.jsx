@@ -1,16 +1,18 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth.js';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const { login } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+    const returnTo = location.state?.returnTo || '/';
 
     const handleSubmit = (event) => {
         event.preventDefault();
         login(email || 'usuario@flygo.com');
-        navigate('/');
+        navigate(returnTo);
     };
 
     return (

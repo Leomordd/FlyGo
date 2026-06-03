@@ -822,9 +822,10 @@ a:hover {
 
 .cuadricula-destinos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--spacing-xl);
     margin-top: var(--spacing-2xl);
+    align-items: stretch;
 }
 
 .tarjeta-destino {
@@ -836,6 +837,7 @@ a:hover {
     backdrop-filter: blur(var(--blur-md));
     position: relative;
     transform-style: preserve-3d;
+    height: 100%;
 }
 
 .tarjeta-destino:hover {
@@ -846,10 +848,12 @@ a:hover {
 
 .imagen-tarjeta {
     width: 100%;
-    height: 170px;
+    height: 210px;
     background:
         radial-gradient(circle at 78% 22%, rgba(255, 255, 255, 0.52), transparent 12%),
         linear-gradient(135deg, var(--color-primary-dark), var(--color-primary) 52%, var(--color-success));
+    background-position: center;
+    background-size: cover;
     position: relative;
     overflow: hidden;
 }
@@ -858,7 +862,9 @@ a:hover {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("../Assets/icon/avion2.svg");
+    background-image:
+        linear-gradient(180deg, rgba(14, 16, 21, 0), rgba(14, 16, 21, 0.42)),
+        url("../Assets/icon/avion2.svg");
     background-repeat: no-repeat;
     background-size: 190px auto;
     background-position: 18% 56%;
@@ -873,18 +879,19 @@ a:hover {
 }
 
 .contenido-tarjeta {
-    height: auto;
-    min-height: 130px;
+    flex: 1;
+    min-height: 190px;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: var(--spacing-lg); 
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--spacing-md); 
+    align-items: stretch;
     padding: var(--spacing-lg);
+    text-align: left;
 }
 
 .contenido-tarjeta > div {
-    flex: 2;
+    flex: 1;
 }
 
 .contenido-tarjeta h3 {
@@ -901,10 +908,17 @@ a:hover {
     margin: 0;
 }
 
+.contenido-tarjeta small {
+    color: var(--text-tertiary);
+    display: block;
+    margin-top: var(--spacing-md);
+}
+
 .precio {
-    flex: 1;
     text-align: center;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: var(--font-size-lg);
     text-shadow: var(--text-shadow-md);
     font-weight: var(--font-weight-bold);
@@ -912,6 +926,7 @@ a:hover {
     background: rgba(76, 201, 240, 1);
     padding: var(--spacing-xs) var(--spacing-md);
     border-radius: var(--border-radius-md);
+    width: 100%;
 }
 
 /* ========== FOOTER ========== */

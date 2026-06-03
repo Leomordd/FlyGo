@@ -6,7 +6,10 @@ export default function PackageCard({ packageItem }) {
 
     return (
         <article className="tarjeta-destino paquete-card">
-            <div className="imagen-tarjeta paquete-card__imagen">
+            <div
+                className="imagen-tarjeta paquete-card__imagen"
+                style={{ backgroundImage: `linear-gradient(180deg, rgba(14, 16, 21, 0.08), rgba(14, 16, 21, 0.58)), url(${packageItem.image})` }}
+            >
                 <span>{packageItem.tag}</span>
             </div>
             <div className="contenido-tarjeta">
