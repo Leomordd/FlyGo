@@ -10,9 +10,11 @@ import './Styles/animations.css';
 import './Styles/responsive.css';
 import './Styles/react-pages.css';
 
+const routerBasename = import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL;
+
 createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename={routerBasename}>
             <AuthProvider>
                 <CartProvider>
                     <App />
