@@ -21,4 +21,5 @@ router.use('/recommendations', recommendationRoutes);
 router.use('/reviews', reviewRoutes);
 router.use('/users', userRoutes);
 
+// Asegúrate de que termine así, sin nada más abajo:
 export default router;
