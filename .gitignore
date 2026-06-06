@@ -1,0 +1,5 @@
+Backend/data/
+Backend/*.log
+Backend/.env
+Frontend/.env
+Frontend/node_modules/.vite/

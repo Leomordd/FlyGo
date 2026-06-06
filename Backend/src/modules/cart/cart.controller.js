@@ -1,12 +1,12 @@
 import { asyncHandler } from '../../utils/asyncHandler.js';
 import { cartService } from './cart.service.js';
 
-export const getCart = asyncHandler(async (_req, res) => {
-    const cart = await cartService.get();
+export const getCart = asyncHandler(async (req, res) => {
+    const cart = await cartService.get(req.user.id);
     res.json(cart);
 });
 
 export const updateCart = asyncHandler(async (req, res) => {
-    const cart = await cartService.update(req.body);
+    const cart = await cartService.update(req.user.id, req.body);
     res.json(cart);
 });

@@ -1,15 +1,16 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import useCart from '../hooks/useCart.js';
 import useAuth from '../hooks/useAuth.js';
 import { packages } from '../data/packages.js';
+import { api } from '../services/apiClient.js';
 
 export default function PackageDetail() {
     const { packageId } = useParams();
     const { addItem } = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
-    const packageItem = packages.find((item) => item.id === packageId);
+    const [packageItem, setPackageItem] = useState(() => packages.find((item) => item.id === packageId));
     const [activeImage, setActiveImage] = useState(0);
     const [reviews, setReviews] = useState(packageItem?.reviews || []);
     const [reviewForm, setReviewForm] = useState({ rating: 5, text: '' });
@@ -17,10 +18,41 @@ export default function PackageDetail() {
         { name: 'Equipo FlyGo', text: 'Tip: reservar excursiones clave con anticipacion mejora mucho la experiencia.' }
     ]);
     const [commentText, setCommentText] = useState('');
+    const [experienceMessage, setExperienceMessage] = useState('');
     const mapSrc = useMemo(() => {
         if (!packageItem) return '';
         return `https://www.google.com/maps?q=${encodeURIComponent(packageItem.mapQuery || packageItem.destination)}&output=embed`;
     }, [packageItem]);
+
+    useEffect(() => {
+        let isMounted = true;
+
+        api.getPackage(packageId)
+            .then((apiPackage) => {
+                if (isMounted && apiPackage?.id) setPackageItem(apiPackage);
+            })
+            .catch(() => {});
+
+        return () => {
+            isMounted = false;
+        };
+    }, [packageId]);
+
+    useEffect(() => {
+        if (!packageItem) return;
+
+        Promise.all([
+            api.getReviews(packageItem.id),
+            api.getComments(packageItem.id)
+        ])
+            .then(([apiReviews, apiComments]) => {
+                setReviews(apiReviews.length ? apiReviews : packageItem.reviews || []);
+                setComments(apiComments.length ? apiComments : [
+                    { name: 'Equipo FlyGo', text: 'Tip: reservar excursiones clave con anticipacion mejora mucho la experiencia.' }
+                ]);
+            })
+            .catch((error) => setExperienceMessage(error.message));
+    }, [packageItem?.id]);
 
     if (!packageItem) {
         return (
@@ -36,13 +68,17 @@ export default function PackageDetail() {
     }
 
     const galleryImages = [packageItem.heroImage, ...packageItem.gallery];
-    const averageRating = (reviews.reduce((total, review) => total + review.rating, 0) / reviews.length).toFixed(1);
+
+    const averageRating = reviews.length
+        ? (reviews.reduce((total, review) => total + Number(review.rating), 0) / reviews.length).toFixed(1)
+        : '0.0';
     const goToLogin = () => navigate('/login', { state: { returnTo: `/planes/${packageItem.id}` } });
     const changeGalleryImage = (direction) => {
         setActiveImage((current) => (current + direction + galleryImages.length) % galleryImages.length);
     };
-    const handleCommentSubmit = (event) => {
+    const handleCommentSubmit = async (event) => {
         event.preventDefault();
+        setExperienceMessage('');
 
         if (!user) {
             goToLogin();
@@ -52,11 +88,21 @@ export default function PackageDetail() {
         const text = commentText.trim();
         if (!text) return;
 
-        setComments((current) => [{ name: user.name, text }, ...current]);
-        setCommentText('');
+        try {
+            const comment = await api.createComment({
+                packageId: packageItem.id,
+                name: user.firstName || user.email,
+                text
+            });
+            setComments((current) => [comment, ...current]);
+            setCommentText('');
+        } catch (error) {
+            setExperienceMessage(error.message);
+        }
     };
-    const handleReviewSubmit = (event) => {
+    const handleReviewSubmit = async (event) => {
         event.preventDefault();
+        setExperienceMessage('');
 
         if (!user) {
             goToLogin();
@@ -66,8 +112,18 @@ export default function PackageDetail() {
         const text = reviewForm.text.trim();
         if (!text) return;
 
-        setReviews((current) => [{ name: user.name, rating: Number(reviewForm.rating), text }, ...current]);
-        setReviewForm({ rating: 5, text: '' });
+        try {
+            const review = await api.createReview({
+                packageId: packageItem.id,
+                name: user.firstName || user.email,
+                rating: Number(reviewForm.rating),
+                text
+            });
+            setReviews((current) => [review, ...current]);
+            setReviewForm({ rating: 5, text: '' });
+        } catch (error) {
+            setExperienceMessage(error.message);
+        }
     };
 
     return (
@@ -166,6 +222,7 @@ export default function PackageDetail() {
                             <span className="etiqueta-plan">Resenas</span>
                             <h2>Viajeros que ya fueron</h2>
                         </div>
+                        {experienceMessage && <p className="mensaje-error">{experienceMessage}</p>}
                         <form className="resena-form" onSubmit={handleReviewSubmit}>
                             <div className="selector-estrellas" aria-label="Elegir estrellas">
                                 {[1, 2, 3, 4, 5].map((rating) => (
@@ -176,7 +233,7 @@ export default function PackageDetail() {
                                         onClick={() => setReviewForm((current) => ({ ...current, rating }))}
                                         type="button"
                                     >
-                                        *
+                                        &#9733;
                                     </button>
                                 ))}
                             </div>
@@ -192,7 +249,7 @@ export default function PackageDetail() {
                             {reviews.map((review, index) => (
                                 <article key={`${review.name}-${index}`}>
                                     <strong>{review.name}</strong>
-                                    <span>{review.rating}/5</span>
+                                    <span>{Number(review.rating)}/5</span>
                                     <p>{review.text}</p>
                                 </article>
                             ))}

@@ -165,6 +165,16 @@
     margin-bottom: var(--spacing-lg);
 }
 
+.mensaje-error {
+    margin: 0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: #ffd6d6;
+    background: rgba(238, 75, 102, 0.14);
+    border: var(--border-width-thin) solid rgba(238, 75, 102, 0.35);
+    border-radius: var(--border-radius-md);
+    text-align: left;
+}
+
 .carrito-layout {
     display: grid;
     gap: var(--spacing-xl);
@@ -180,18 +190,40 @@
     gap: var(--spacing-md);
 }
 
+.checkout-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
 .item-carrito {
-    display: flex;
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
     gap: var(--spacing-md);
     padding: var(--spacing-lg);
     text-align: left;
 }
 
+.item-carrito img {
+    width: 96px;
+    height: 72px;
+    object-fit: cover;
+    border: var(--border-width-thin) solid var(--border-color-primary);
+    border-radius: var(--border-radius-md);
+}
+
 .item-carrito h3,
 .item-carrito p {
     margin: 0;
+}
+
+.item-carrito span {
+    display: inline-flex;
+    margin-top: var(--spacing-xs);
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-medium);
 }
 
 .resumen-carrito {
@@ -206,6 +238,46 @@
     margin-right: auto;
     color: var(--text-primary);
     font-size: var(--font-size-xl);
+}
+
+.checkout-panel {
+    position: sticky;
+    top: 104px;
+    display: grid;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.checkout-panel label {
+    display: grid;
+    gap: var(--spacing-xs);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-medium);
+    text-align: left;
+}
+
+.checkout-panel input,
+.checkout-panel select,
+.checkout-panel textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+    border: var(--border-width-thin) solid var(--border-color-secondary);
+    border-radius: var(--border-radius-md);
+    font: inherit;
+    outline: none;
+}
+
+.checkout-panel textarea {
+    resize: vertical;
+}
+
+.enlace-auth {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
 }
 
 .resultado-plan,
@@ -436,6 +508,41 @@
     gap: var(--spacing-md);
 }
 
+.resena-form,
+.comentarios-form {
+    display: grid;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.selector-estrellas {
+    display: inline-flex;
+    width: max-content;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs);
+    background: rgba(255, 255, 255, 0.04);
+    border: var(--border-width-thin) solid var(--border-color-primary);
+    border-radius: var(--border-radius-full);
+}
+
+.selector-estrellas button {
+    width: 34px;
+    height: 34px;
+    color: var(--text-tertiary);
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+    line-height: 1;
+}
+
+.selector-estrellas button.activo,
+.selector-estrellas button:hover {
+    color: #ffd166;
+    background: rgba(255, 209, 102, 0.12);
+}
+
 .resenas-destino__grid article,
 .comentarios-lista article {
     padding: var(--spacing-md);
@@ -462,15 +569,10 @@
     font-weight: var(--font-weight-bold);
 }
 
-.comentarios-form {
-    display: grid;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-}
-
-.comentarios-form input,
+.resena-form textarea,
 .comentarios-form textarea {
     width: 100%;
+    min-height: 104px;
     padding: var(--spacing-sm) var(--spacing-md);
     color: var(--text-primary);
     background: var(--bg-tertiary);
@@ -480,7 +582,7 @@
     outline: none;
 }
 
-.comentarios-form input:focus,
+.resena-form textarea:focus,
 .comentarios-form textarea:focus {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.1);
@@ -540,6 +642,7 @@
     .detalle-paquete,
     .detalle-paquete__grid,
     .experiencia-destino,
+    .checkout-grid,
     .docs-grid {
         grid-template-columns: 1fr;
     }
@@ -567,8 +670,17 @@
     }
 
     .item-carrito {
+        grid-template-columns: 1fr;
         align-items: stretch;
-        flex-direction: column;
+    }
+
+    .item-carrito img {
+        width: 100%;
+        height: 160px;
+    }
+
+    .checkout-panel {
+        position: static;
     }
 
     .auth-card {

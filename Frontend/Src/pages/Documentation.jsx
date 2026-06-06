@@ -11,11 +11,11 @@ const sections = [
     },
     {
         title: 'Datos actuales',
-        text: 'Los paquetes salen de Src/data/packages.js. Mas adelante se pueden reemplazar por respuestas del backend.'
+        text: 'Los paquetes se sirven desde el backend y mantienen la misma estructura usada por las vistas actuales.'
     },
     {
         title: 'Estado global',
-        text: 'CartContext maneja el carrito y AuthContext simula una sesion basica para login.'
+        text: 'AuthContext persiste token firmado y CartContext sincroniza el carrito con /api/cart.'
     }
 ];
 
@@ -26,7 +26,7 @@ export default function Documentation() {
                 <span className="etiqueta-plan">Guia del proyecto</span>
                 <h1 className="titulo-seccion">Documentacion de FlyGo</h1>
                 <p className="subtitulo-seccion">
-                    Esta pagina resume como esta armada la aplicacion y que piezas faltan conectar con backend.
+                    Esta pagina resume como esta armada la aplicacion y que piezas ya estan conectadas con backend.
                 </p>
 
                 <div className="docs-grid">
@@ -39,11 +39,10 @@ export default function Documentation() {
                 </div>
 
                 <div className="docs-card docs-card--full">
-                    <h2>Proximas conexiones reales</h2>
+                    <h2>Integraciones reales</h2>
                     <p>
-                        El formulario personalizado deberia enviar las respuestas a un servicio de recomendaciones.
-                        El login, registro, busqueda avanzada, checkout y persistencia del carrito tambien dependen
-                        del backend y la base de datos.
+                        Registro, inicio de sesion, carrito, reservas, comentarios, resenas y checkout usan endpoints
+                        reales. PayPal y Mercado Pago quedan listos para operar al cargar las credenciales del proveedor.
                     </p>
                     <div className="detalle-paquete__acciones">
                         <Link className="boton boton-primario" to="/plan-personalizado">Probar formulario</Link>

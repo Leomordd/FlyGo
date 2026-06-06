@@ -9,11 +9,11 @@ export default function Footer() {
         },
         {
             title: 'Datos',
-            text: 'Los paquetes viven en Src/data/packages.js hasta conectar backend y base de datos.'
+            text: 'Los paquetes se exponen tambien por /api/packages para unificar la lectura desde el backend.'
         },
         {
             title: 'Estado',
-            text: 'CartContext maneja carrito y AuthContext centraliza la sesion simulada.'
+            text: 'AuthContext guarda token real y CartContext sincroniza el carrito del usuario autenticado.'
         }
     ];
 

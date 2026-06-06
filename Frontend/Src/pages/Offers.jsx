@@ -1,7 +1,8 @@
 import PackageCard from '../components/PackageCard.jsx';
-import { packages } from '../data/packages.js';
+import usePackages from '../hooks/usePackages.js';
 
 export default function Offers() {
+    const { packages, error } = usePackages();
     const offers = packages.filter((packageItem) => packageItem.type === 'offer');
 
     return (
@@ -9,7 +10,8 @@ export default function Offers() {
             <div className="contenedor">
                 <span className="etiqueta-plan">Promos activas</span>
                 <h1 className="titulo-seccion">Ofertas de temporada</h1>
-                <p className="subtitulo-seccion">Ejemplo de pagina para mostrar descuentos, cupos limitados y viajes destacados.</p>
+                <p className="subtitulo-seccion">Descuentos, cupos limitados y viajes destacados listos para reservar.</p>
+                {error && <p className="mensaje-error">Mostrando respaldo local: {error}</p>}
                 <div className="panel-ofertas">
                     <div>
                         <strong>Hasta 35% OFF</strong>

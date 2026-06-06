@@ -7,6 +7,6 @@ export const listPackageComments = asyncHandler(async (req, res) => {
 });
 
 export const createComment = asyncHandler(async (req, res) => {
-    const comment = await commentsService.create(req.body);
+    const comment = await commentsService.create(req.user, req.body);
     res.status(201).json(comment);
 });

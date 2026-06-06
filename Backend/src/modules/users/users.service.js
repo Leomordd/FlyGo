@@ -1,11 +1,11 @@
 import { usersRepository } from './users.repository.js';
 
 export const usersService = {
-    getProfile() {
-        return usersRepository.getProfile();
+    getProfile(userId) {
+        return usersRepository.getProfile(userId);
     },
 
-    updateProfile(payload) {
-        return usersRepository.updateProfile(payload);
+    updateProfile(userId, payload) {
+        return usersRepository.updateProfile(userId, payload);
     }
 };

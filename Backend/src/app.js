@@ -10,7 +10,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3000;
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -24,9 +23,5 @@ app.get('/health', (_req, res) => {
 });
 
 app.use(errorMiddleware);
-
-app.listen(PORT, () => {
-    console.log(`servidor web escuchando en http://localhost:${PORT}`);
-});
 
 export default app;

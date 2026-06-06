@@ -1,8 +1,9 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import PackageCard from '../components/PackageCard.jsx';
-import { packages } from '../data/packages.js';
+import usePackages from '../hooks/usePackages.js';
 
 export default function Search() {
+    const { packages, error } = usePackages();
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q')?.trim() || '';
     const normalizedQuery = query.toLowerCase();
@@ -23,6 +24,7 @@ export default function Search() {
                 <p className="subtitulo-seccion">
                     Filtramos los paquetes por destino, nombre, descripcion y etiqueta.
                 </p>
+                {error && <p className="mensaje-error">Mostrando respaldo local: {error}</p>}
 
                 {results.length > 0 ? (
                     <div className="cuadricula-destinos">

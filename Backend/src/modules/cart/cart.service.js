@@ -1,11 +1,11 @@
 import { cartRepository } from './cart.repository.js';
 
 export const cartService = {
-    get() {
-        return cartRepository.get();
+    get(userId) {
+        return cartRepository.get(userId);
     },
 
-    update(payload) {
-        return cartRepository.update(payload);
+    update(userId, payload) {
+        return cartRepository.update(userId, payload);
     }
 };

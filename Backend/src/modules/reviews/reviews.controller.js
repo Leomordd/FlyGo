@@ -7,6 +7,6 @@ export const listPackageReviews = asyncHandler(async (req, res) => {
 });
 
 export const createReview = asyncHandler(async (req, res) => {
-    const review = await reviewsService.create(req.body);
+    const review = await reviewsService.create(req.user, req.body);
     res.status(201).json(review);
 });

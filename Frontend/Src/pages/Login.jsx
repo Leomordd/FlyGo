@@ -3,16 +3,27 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth.js';
 
 export default function Login() {
-    const [email, setEmail] = useState('');
+    const [form, setForm] = useState({ email: '', password: '' });
+    const [error, setError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const { login } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const returnTo = location.state?.returnTo || '/';
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        login(email || 'usuario@flygo.com');
-        navigate(returnTo);
+        setError('');
+        setIsSubmitting(true);
+
+        try {
+            await login(form);
+            navigate(returnTo);
+        } catch (loginError) {
+            setError(loginError.message);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -22,13 +33,16 @@ export default function Login() {
                 <h1>Iniciar Sesion</h1>
                 <label>
                     Email
-                    <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="tu@email.com" />
+                    <input value={form.email} onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))} type="email" placeholder="tu@email.com" required />
                 </label>
                 <label>
                     Contrasena
-                    <input type="password" placeholder="********" />
+                    <input value={form.password} onChange={(event) => setForm((current) => ({ ...current, password: event.target.value }))} type="password" placeholder="********" required />
                 </label>
-                <button className="boton boton-primario" type="submit">Entrar</button>
+                {error && <p className="mensaje-error">{error}</p>}
+                <button className="boton boton-primario" type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Entrando...' : 'Entrar'}
+                </button>
             </form>
         </section>
     );

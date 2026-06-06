@@ -1,6 +1,7 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import useCart from '../hooks/useCart.js';
+import useAuth from '../hooks/useAuth.js';
 import logoIcon from '../Assets/icon/logotipo (1).png';
 import logoText from '../Assets/icon/logotexto.png';
 
@@ -8,6 +9,7 @@ export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const { totalItems } = useCart();
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
 
     const closeMenu = () => setIsMenuOpen(false);
@@ -43,8 +45,14 @@ export default function Navbar() {
                         <NavLink className={({ isActive }) => `enlace-navegacion ${isActive ? 'activo' : ''}`} to="/plan-personalizado" onClick={closeMenu}>Plan</NavLink>
                     </li>
                     <li className="acciones-menu-movil">
-                        <Link className="boton boton-iniciar-sesion" to="/login" onClick={closeMenu}>Iniciar Sesion</Link>
-                        <Link className="boton boton-registrarse" to="/registro" onClick={closeMenu}>Registrarse</Link>
+                        {user ? (
+                            <button className="boton boton-iniciar-sesion" type="button" onClick={() => { logout(); closeMenu(); }}>Salir</button>
+                        ) : (
+                            <>
+                                <Link className="boton boton-iniciar-sesion" to="/login" onClick={closeMenu}>Iniciar Sesion</Link>
+                                <Link className="boton boton-registrarse" to="/registro" onClick={closeMenu}>Registrarse</Link>
+                            </>
+                        )}
                     </li>
                 </ul>
 
@@ -74,8 +82,17 @@ export default function Navbar() {
                         </svg>
                         {totalItems > 0 && <span className="notificacion-carrito notificacion-carrito--visible">{totalItems}</span>}
                     </Link>
-                    <Link className="boton boton-iniciar-sesion" to="/login">Iniciar Sesion</Link>
-                    <Link className="boton boton-registrarse" to="/registro">Registrarse</Link>
+                    {user ? (
+                        <>
+                            <span className="usuario-navbar">{user.firstName || user.email}</span>
+                            <button className="boton boton-iniciar-sesion" type="button" onClick={logout}>Salir</button>
+                        </>
+                    ) : (
+                        <>
+                            <Link className="boton boton-iniciar-sesion" to="/login">Iniciar Sesion</Link>
+                            <Link className="boton boton-registrarse" to="/registro">Registrarse</Link>
+                        </>
+                    )}
                 </div>
 
                 <button
