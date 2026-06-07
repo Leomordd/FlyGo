@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import useCart from '../hooks/useCart.js';
 import useAuth from '../hooks/useAuth.js';
+import useCurrency from '../hooks/useCurrency.js';
 import { packages } from '../data/packages.js';
 import { api } from '../services/apiClient.js';
 
@@ -9,14 +10,13 @@ export default function PackageDetail() {
     const { packageId } = useParams();
     const { addItem } = useCart();
     const { user } = useAuth();
+    const { formatPrice } = useCurrency();
     const navigate = useNavigate();
     const [packageItem, setPackageItem] = useState(() => packages.find((item) => item.id === packageId));
     const [activeImage, setActiveImage] = useState(0);
-    const [reviews, setReviews] = useState(packageItem?.reviews || []);
+    const [reviews, setReviews] = useState([]);
     const [reviewForm, setReviewForm] = useState({ rating: 5, text: '' });
-    const [comments, setComments] = useState([
-        { name: 'Equipo FlyGo', text: 'Tip: reservar excursiones clave con anticipacion mejora mucho la experiencia.' }
-    ]);
+    const [comments, setComments] = useState([]);
     const [commentText, setCommentText] = useState('');
     const [experienceMessage, setExperienceMessage] = useState('');
     const mapSrc = useMemo(() => {
@@ -46,10 +46,8 @@ export default function PackageDetail() {
             api.getComments(packageItem.id)
         ])
             .then(([apiReviews, apiComments]) => {
-                setReviews(apiReviews.length ? apiReviews : packageItem.reviews || []);
-                setComments(apiComments.length ? apiComments : [
-                    { name: 'Equipo FlyGo', text: 'Tip: reservar excursiones clave con anticipacion mejora mucho la experiencia.' }
-                ]);
+                setReviews(apiReviews);
+                setComments(apiComments);
             })
             .catch((error) => setExperienceMessage(error.message));
     }, [packageItem?.id]);
@@ -144,7 +142,7 @@ export default function PackageDetail() {
                     </div>
 
                     <aside className="detalle-paquete__resumen tarjeta-3d">
-                        <strong>Desde ${packageItem.price}</strong>
+                        <strong>Desde {formatPrice(packageItem.price)}</strong>
                         <span>{packageItem.destination}</span>
                         <span>{packageItem.days} dias</span>
                         <span>{averageRating}/5 valoracion</span>
@@ -246,6 +244,7 @@ export default function PackageDetail() {
                             <button className="boton boton-primario" type="submit">Publicar resena</button>
                         </form>
                         <div className="resenas-destino__grid">
+                            {reviews.length === 0 && <p className="estado-vacio">Todavia no hay resenas para este viaje.</p>}
                             {reviews.map((review, index) => (
                                 <article key={`${review.name}-${index}`}>
                                     <strong>{review.name}</strong>
@@ -271,6 +270,7 @@ export default function PackageDetail() {
                             <button className="boton boton-primario" type="submit">Publicar comentario</button>
                         </form>
                         <div className="comentarios-lista">
+                            {comments.length === 0 && <p className="estado-vacio">Todavia no hay comentarios para este viaje.</p>}
                             {comments.map((comment, index) => (
                                 <article key={`${comment.name}-${index}`}>
                                     <strong>{comment.name}</strong>

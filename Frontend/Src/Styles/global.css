@@ -290,6 +290,32 @@ a:hover {
     flex-shrink: 0;
 }
 
+.selector-moneda {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.selector-moneda select {
+    min-height: 36px;
+    padding: 0 var(--spacing-sm);
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+    border: var(--border-width-thin) solid var(--border-color-secondary);
+    border-radius: var(--border-radius-md);
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+.selector-moneda select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.1);
+}
+
 .boton-carrito {
     position: relative;
     background: transparent;

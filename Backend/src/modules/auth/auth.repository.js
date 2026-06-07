@@ -9,9 +9,23 @@ import {
 } from '../../utils/security.js';
 
 function normalizeEmail(email) {
+<<<<<<< HEAD
     return String(email || '')
         .trim()
         .toLowerCase();
+=======
+    const normalized = String(email || '').trim().toLowerCase();
+    const [localPart, domain] = normalized.split('@');
+
+    if (!localPart || !domain) return normalized;
+
+    if (domain === 'gmail.com' || domain === 'googlemail.com') {
+        const canonicalLocalPart = localPart.split('+')[0].replace(/\./g, '');
+        return `${canonicalLocalPart}@gmail.com`;
+    }
+
+    return normalized;
+>>>>>>> 458e51da5b1994d744d4409794bf1cac06e1c9a0
 }
 
 function buildSession(user) {
