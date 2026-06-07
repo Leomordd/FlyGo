@@ -239,11 +239,54 @@
     margin: 0;
 }
 
-.item-carrito span {
-    display: inline-flex;
-    margin-top: var(--spacing-xs);
-    color: var(--text-secondary);
+.item-carrito__contenido {
+    display: grid;
+    gap: var(--spacing-sm);
+    min-width: 0;
+}
+
+.item-carrito__detalles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-xs) var(--spacing-md);
+    margin: 0;
+}
+
+.item-carrito__detalles div {
+    display: grid;
+    gap: 2px;
+}
+
+.item-carrito__detalles dt {
+    color: var(--text-tertiary);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.item-carrito__detalles dd {
+    margin: 0;
+    color: var(--text-primary);
     font-weight: var(--font-weight-medium);
+}
+
+.item-carrito__extra {
+    color: var(--text-secondary);
+}
+
+.item-carrito__extra summary {
+    width: max-content;
+    max-width: 100%;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: var(--font-weight-medium);
+}
+
+.item-carrito__extra ul {
+    display: grid;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    padding-left: var(--spacing-lg);
 }
 
 .resumen-carrito {
@@ -258,6 +301,27 @@
     margin-right: auto;
     color: var(--text-primary);
     font-size: var(--font-size-xl);
+}
+
+.precio-reserva {
+    display: grid;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    text-align: left;
+    background: rgba(76, 201, 240, 0.08);
+    border: var(--border-width-thin) solid rgba(76, 201, 240, 0.22);
+    border-radius: var(--border-radius-md);
+}
+
+.precio-reserva span,
+.precio-reserva small {
+    color: var(--text-secondary);
+}
+
+.precio-reserva strong {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
 }
 
 .checkout-panel {
@@ -932,6 +996,10 @@
     .item-carrito {
         grid-template-columns: 1fr;
         align-items: stretch;
+    }
+
+    .item-carrito__detalles {
+        grid-template-columns: 1fr;
     }
 
     .item-carrito img {

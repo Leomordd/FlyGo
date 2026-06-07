@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import useCart from '../hooks/useCart.js';
 import useAuth from '../hooks/useAuth.js';
+import useCurrency from '../hooks/useCurrency.js';
 import logoIcon from '../Assets/icon/logotipo (1).png';
 import logoText from '../Assets/icon/logotexto.png';
 
@@ -10,6 +11,7 @@ export default function Navbar() {
     const [searchTerm, setSearchTerm] = useState('');
     const { totalItems } = useCart();
     const { user, logout } = useAuth();
+    const { currency, setCurrency } = useCurrency();
     const navigate = useNavigate();
 
     const closeMenu = () => setIsMenuOpen(false);
@@ -74,6 +76,13 @@ export default function Navbar() {
                 </form>
 
                 <div className="acciones-usuario">
+                    <label className="selector-moneda">
+                        <span>Moneda</span>
+                        <select value={currency} onChange={(event) => setCurrency(event.target.value)} aria-label="Cambiar moneda">
+                            <option value="USD">US</option>
+                            <option value="ARS">ARS</option>
+                        </select>
+                    </label>
                     <Link className="boton boton-carrito" to="/carrito" aria-label="Carrito de compras">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <circle cx="9" cy="21" r="1"></circle>

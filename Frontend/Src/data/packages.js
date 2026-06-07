@@ -26,10 +26,6 @@ export const packages = [
             'Parejas que buscan una escapada romantica.',
             'Viajeros que quieren caminar la ciudad con calma.',
             'Primera visita a Europa con agenda clara.'
-        ],
-        reviews: [
-            { name: 'Valentina R.', rating: 5, text: 'El hotel estaba perfecto y la cena fue increible. Muy prolijo todo.' },
-            { name: 'Tomas G.', rating: 5, text: 'Ideal para no perder tiempo armando recorridos. Paris se sintio facil.' }
         ]
     },
     {
@@ -59,10 +55,6 @@ export const packages = [
             'Fans de cultura, tecnologia y comida local.',
             'Viajeros que quieren una ciudad intensa y segura.',
             'Grupos que prefieren recorridos guiados.'
-        ],
-        reviews: [
-            { name: 'Nicolas P.', rating: 5, text: 'La organizacion de trenes nos salvo. Todo muy claro.' },
-            { name: 'Mica A.', rating: 4, text: 'Muchisimas actividades y buenas recomendaciones para comer.' }
         ]
     },
     {
@@ -92,10 +84,6 @@ export const packages = [
             'Viajeros que quieren una escapada urbana.',
             'Compras, shows, miradores y fotografia.',
             'Quienes visitan NY por primera vez.'
-        ],
-        reviews: [
-            { name: 'Sofia L.', rating: 5, text: 'El itinerario express fue justo lo que necesitabamos.' },
-            { name: 'Bruno M.', rating: 4, text: 'Muy buen balance entre turismo y tiempo libre.' }
         ]
     },
     {
@@ -125,10 +113,6 @@ export const packages = [
             'Viajes con amigos y escapadas de playa.',
             'Presupuesto cuidado sin perder ubicacion.',
             'Quienes quieren combinar ciudad y descanso.'
-        ],
-        reviews: [
-            { name: 'Camila D.', rating: 5, text: 'Muy buena ubicacion y todo facil para movernos.' },
-            { name: 'Lucas S.', rating: 4, text: 'Excelente precio para una semana completa.' }
         ]
     },
     {
@@ -158,10 +142,6 @@ export const packages = [
             'Fotografia, naturaleza y paisajes dramaticos.',
             'Viajeros que quieren una experiencia distinta.',
             'Parejas o grupos aventureros.'
-        ],
-        reviews: [
-            { name: 'Flor B.', rating: 5, text: 'La ruta fue espectacular. La galeria de fotos habla sola.' },
-            { name: 'Eze Q.', rating: 5, text: 'Ver auroras con todo organizado fue una locura.' }
         ]
     },
     {
@@ -191,10 +171,6 @@ export const packages = [
             'Descanso, fotos y viajes romanticos.',
             'Quienes quieren mar sin itinerario pesado.',
             'Luna de miel o escapadas premium.'
-        ],
-        reviews: [
-            { name: 'Agus C.', rating: 5, text: 'Todo hermoso y muy bien coordinado entre islas.' },
-            { name: 'Juli N.', rating: 4, text: 'El hotel y las vistas fueron lo mejor del viaje.' }
         ]
     },
     {
@@ -224,10 +200,6 @@ export const packages = [
             'Viajeros curiosos y amantes de la cultura.',
             'Fotografia, gastronomia y aventura suave.',
             'Quienes buscan algo distinto a lo clasico.'
-        ],
-        reviews: [
-            { name: 'Lara T.', rating: 5, text: 'El desierto fue la parte mas impactante. Excelente armado.' },
-            { name: 'Fede K.', rating: 4, text: 'Muy buena mezcla de ciudad, mercado y aventura.' }
         ]
     },
     {
@@ -257,10 +229,6 @@ export const packages = [
             'Naturaleza, fotografia y viajes nacionales.',
             'Escapadas cortas con alto impacto visual.',
             'Familias, parejas y grupos chicos.'
-        ],
-        reviews: [
-            { name: 'Marcos V.', rating: 5, text: 'El glaciar es imponente. Muy buen plan para pocos dias.' },
-            { name: 'Pau H.', rating: 5, text: 'Todo quedo cerca y los tiempos estuvieron muy bien pensados.' }
         ]
     }
 ];

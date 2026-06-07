@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { CartProvider } from './context/CartContext.jsx';
+import { CurrencyProvider } from './context/CurrencyContext.jsx';
 import './Styles/variables.css';
 import './Styles/global.css';
 import './Styles/animations.css';
@@ -16,9 +17,11 @@ createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <BrowserRouter basename={routerBasename}>
             <AuthProvider>
-                <CartProvider>
-                    <App />
-                </CartProvider>
+                <CurrencyProvider>
+                    <CartProvider>
+                        <App />
+                    </CartProvider>
+                </CurrencyProvider>
             </AuthProvider>
         </BrowserRouter>
     </React.StrictMode>

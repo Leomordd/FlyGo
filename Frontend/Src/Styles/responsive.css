@@ -163,6 +163,10 @@
         gap: var(--spacing-sm);
     }
 
+    .selector-moneda span {
+        display: none;
+    }
+
     .boton-carrito {
         width: 40px;
         height: 40px;
@@ -421,6 +425,11 @@
 
     .acciones-usuario {
         width: auto;
+    }
+
+    .selector-moneda select {
+        min-height: 40px;
+        max-width: 74px;
     }
 
     .boton-iniciar-sesion,

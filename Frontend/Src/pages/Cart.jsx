@@ -1,5 +1,6 @@
 import useCart from '../hooks/useCart.js';
 import useAuth from '../hooks/useAuth.js';
+import useCurrency from '../hooks/useCurrency.js';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { api } from '../services/apiClient.js';
@@ -7,6 +8,7 @@ import { api } from '../services/apiClient.js';
 export default function Cart() {
     const { items, removeItem, totalPrice, clearCart } = useCart();
     const { user } = useAuth();
+    const { currency, formatPrice, convertPrice } = useCurrency();
     const navigate = useNavigate();
     const [checkout, setCheckout] = useState({
         paymentMethod: 'mercado_pago',
@@ -53,8 +55,11 @@ export default function Cart() {
         try {
             const response = await api.createBooking({
                 ...checkout,
-                currency: 'USD',
-                items
+                currency,
+                items: items.map((item) => ({
+                    ...item,
+                    price: convertPrice(item.price)
+                }))
             });
 
             if (response.payment?.approvalUrl) {
@@ -88,17 +93,52 @@ export default function Cart() {
                             {items.map((item) => (
                                 <article className="item-carrito" key={item.id}>
                                     <img src={item.image || item.heroImage} alt="" />
-                                    <div>
+                                    <div className="item-carrito__contenido">
                                         <h3>{item.title}</h3>
-                                        <p>{item.destination}</p>
-                                        <span>{item.quantity} x ${item.price}</span>
+                                        <p>{item.description || item.destination}</p>
+                                        <dl className="item-carrito__detalles">
+                                            <div>
+                                                <dt>Destino</dt>
+                                                <dd>{item.destination || 'A definir'}</dd>
+                                            </div>
+                                            <div>
+                                                <dt>Duracion</dt>
+                                                <dd>{item.days ? `${item.days} dias` : 'A definir'}</dd>
+                                            </div>
+                                            <div>
+                                                <dt>Cantidad</dt>
+                                                <dd>{item.quantity}</dd>
+                                            </div>
+                                            <div>
+                                                <dt>Precio unitario</dt>
+                                                <dd>{formatPrice(item.price)}</dd>
+                                            </div>
+                                            <div>
+                                                <dt>Subtotal</dt>
+                                                <dd>{formatPrice(item.price * item.quantity)}</dd>
+                                            </div>
+                                        </dl>
+                                        {(item.includes?.length || item.aiPlan?.itinerary?.length) && (
+                                            <details className="item-carrito__extra">
+                                                <summary>Ver detalles del pedido</summary>
+                                                {item.includes?.length ? (
+                                                    <ul>{item.includes.map((detail) => <li key={detail}>{detail}</li>)}</ul>
+                                                ) : (
+                                                    <ul>{item.aiPlan.itinerary.slice(0, 5).map((day) => <li key={day.day}>Dia {day.day}: {day.title}</li>)}</ul>
+                                                )}
+                                            </details>
+                                        )}
                                     </div>
                                     <button className="boton boton-secundario" onClick={() => removeItem(item.id)}>Quitar</button>
                                 </article>
                             ))}
                         </div>
                         <form className="resumen-carrito checkout-panel" onSubmit={handleCheckout}>
-                            <strong>Total: ${totalPrice}</strong>
+                            <div className="precio-reserva">
+                                <span>Precio de la reserva</span>
+                                <strong>{formatPrice(totalPrice)}</strong>
+                                <small>Moneda seleccionada: {currency === 'USD' ? 'US dolares' : 'pesos argentinos'}</small>
+                            </div>
                             <label>
                                 Viajeros
                                 <input
