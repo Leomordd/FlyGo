@@ -1,6 +1,9 @@
-import app from './app.js';
-import { env } from './config/env.js';
 
-app.listen(env.port, () => {
-    console.log(`FlyGo API escuchando en http://localhost:${env.port}`);
+import 'dotenv/config'; 
+import app from './app.js';
+
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
