@@ -7,6 +7,6 @@ export const listBookings = asyncHandler(async (req, res) => {
 });
 
 export const createBooking = asyncHandler(async (req, res) => {
-    const booking = await bookingsService.create(req.user.id, req.body);
+    const booking = await bookingsService.create(req.user, req.body);
     res.status(201).json(booking);
 });

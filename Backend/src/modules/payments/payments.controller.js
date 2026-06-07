@@ -9,7 +9,7 @@ export const listPayments = asyncHandler(async (req, res) => {
 export const capturePaypalPayment = asyncHandler(async (req, res) => {
     const result = await paymentsService.capturePaypal({
         orderId: req.body.orderId,
-        userId: req.user.id
+        user: req.user
     });
     res.json(result);
 });

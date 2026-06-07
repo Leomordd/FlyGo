@@ -458,7 +458,7 @@
 
     .seccion-inicio {
         min-height: calc(100vh - 123px);
-        padding: var(--spacing-xl) 0;
+        padding: var(--spacing-xl) var(--spacing-md);
     }
 
     .seccion-inicio::before {
@@ -470,28 +470,35 @@
     .contenido-inicio {
         width: 100%;
         max-width: 460px;
-        padding: var(--spacing-xl) var(--spacing-md);
+        min-width: 0;
+        padding: var(--spacing-lg) 0;
     }
 
     .titulo-inicio {
-        font-size: var(--font-size-4xl);
+        font-size: clamp(2rem, 9vw, 2.75rem);
         margin-bottom: var(--spacing-md);
+        overflow-wrap: anywhere;
     }
 
     .subtitulo-inicio {
         margin-bottom: var(--spacing-xl);
         line-height: var(--line-height-normal);
+        overflow-wrap: anywhere;
     }
 
     .llamada-accion {
+        width: min(360px, 100%);
         flex-direction: column;
         gap: var(--spacing-md);
     }
 
     .boton {
+        max-width: 100%;
         width: 100%;
         min-height: 46px;
         padding: var(--spacing-sm) var(--spacing-lg);
+        white-space: normal;
+        text-align: center;
     }
 
     .acciones-usuario .boton-carrito {
@@ -616,7 +623,33 @@
     }
 
     .titulo-inicio {
-        font-size: var(--font-size-3xl);
+        font-size: clamp(1.75rem, 8.4vw, 2.25rem);
+    }
+
+    .hero-badge {
+        max-width: 100%;
+        justify-content: center;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .seccion-inicio {
+        min-height: auto;
+        padding-top: var(--spacing-lg);
+        padding-bottom: var(--spacing-2xl);
+    }
+
+    .seccion-inicio::before {
+        background-size: auto 100%;
+        transform: scale(1.08);
+    }
+
+    .contenido-inicio {
+        max-width: 100%;
+    }
+
+    .llamada-accion {
+        width: 100%;
     }
 
     .titulo-inicio-plan,

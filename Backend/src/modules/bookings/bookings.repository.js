@@ -27,6 +27,12 @@ export const bookingsRepository = {
             status: 'pending_payment',
             travelDate: payload.travelDate || null,
             specialRequests: payload.specialRequests || '',
+            billing: {
+                email: payload.billingEmail || '',
+                document: payload.billingDocument || '',
+                cardholder: payload.cardName || '',
+                cardLast4: String(payload.cardNumber || '').replace(/\D/g, '').slice(-4)
+            },
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
         };

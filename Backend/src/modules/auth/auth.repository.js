@@ -60,6 +60,7 @@ export const authRepository = {
                 lastName,
                 phone: payload.phone || '',
                 role: 'customer',
+                emailUpdates: Boolean(payload.emailUpdates),
                 isActive: true,
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()

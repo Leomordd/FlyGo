@@ -2,13 +2,15 @@ import { bookingsRepository } from './bookings.repository.js';
 import { ApiError } from '../../utils/ApiError.js';
 import { paymentsRepository } from '../payments/payments.repository.js';
 import { paymentsService } from '../payments/payments.service.js';
+import { emailService } from '../notifications/email.service.js';
 
 export const bookingsService = {
     list(userId) {
         return bookingsRepository.list(userId);
     },
 
-    async create(userId, payload) {
+    async create(user, payload) {
+        const userId = user.id;
         if (!Array.isArray(payload.items) || payload.items.length === 0) {
             throw new ApiError(400, 'El carrito no tiene items para reservar');
         }
@@ -29,6 +31,7 @@ export const bookingsService = {
 
         try {
             const providerPayment = await paymentsService.createProviderCheckout({ booking, payment });
+            await emailService.booking(user, booking, providerPayment);
             return { booking, payment: providerPayment };
         } catch (error) {
             await paymentsRepository.update(payment.id, {

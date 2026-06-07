@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
+import FloatingAiPlanner from './components/FloatingAiPlanner.jsx';
 import AppRoutes from './routes/AppRoutes.jsx';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -46,6 +47,7 @@ export default function App() {
             <main>
                 <AppRoutes />
             </main>
+            <FloatingAiPlanner />
             <Footer />
         </>
     );

@@ -39,6 +39,7 @@ export default function Login() {
                     Contrasena
                     <input value={form.password} onChange={(event) => setForm((current) => ({ ...current, password: event.target.value }))} type="password" placeholder="********" required />
                 </label>
+                <p className="nota-auth">Te enviaremos un email de seguridad cuando ingreses.</p>
                 {error && <p className="mensaje-error">{error}</p>}
                 <button className="boton boton-primario" type="submit" disabled={isSubmitting}>
                     {isSubmitting ? 'Entrando...' : 'Entrar'}

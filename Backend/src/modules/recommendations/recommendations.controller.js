@@ -5,3 +5,8 @@ export const listRecommendations = asyncHandler(async (_req, res) => {
     const recommendations = await recommendationsService.list();
     res.json(recommendations);
 });
+
+export const createTravelPlan = asyncHandler(async (req, res) => {
+    const plan = await recommendationsService.createPlan(req.body);
+    res.status(201).json(plan);
+});

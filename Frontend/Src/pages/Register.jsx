@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth.js';
 
 export default function Register() {
-    const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '' });
+    const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '', emailUpdates: true });
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { register } = useAuth();
@@ -44,6 +44,14 @@ export default function Register() {
                 <label>
                     Contrasena
                     <input value={form.password} onChange={(event) => setForm((current) => ({ ...current, password: event.target.value }))} type="password" placeholder="Minimo 8 caracteres" minLength="8" required />
+                </label>
+                <label className="checkline">
+                    <input
+                        checked={form.emailUpdates}
+                        onChange={(event) => setForm((current) => ({ ...current, emailUpdates: event.target.checked }))}
+                        type="checkbox"
+                    />
+                    Quiero recibir emails con actualizaciones, ofertas y mejoras de mis viajes
                 </label>
                 {error && <p className="mensaje-error">{error}</p>}
                 <button className="boton boton-registrarse" type="submit" disabled={isSubmitting}>

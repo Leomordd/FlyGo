@@ -2,6 +2,7 @@ import { paymentsRepository } from './payments.repository.js';
 import { bookingsRepository } from '../bookings/bookings.repository.js';
 import { ApiError } from '../../utils/ApiError.js';
 import { capturePaypalOrder, createMercadoPagoPreference, createPaypalOrder } from './payments.provider.js';
+import { emailService } from '../notifications/email.service.js';
 
 export const paymentsService = {
     async createProviderCheckout({ booking, payment }) {
@@ -21,13 +22,13 @@ export const paymentsService = {
         return paymentsRepository.listByUser(userId);
     },
 
-    async capturePaypal({ orderId, userId }) {
+    async capturePaypal({ orderId, user }) {
         if (!orderId) throw new ApiError(400, 'Falta el identificador de la orden PayPal');
 
         const payment = await paymentsRepository.findByProviderRef(orderId);
         if (!payment) throw new ApiError(404, 'Pago no encontrado');
 
-        const userBookings = await bookingsRepository.list(userId);
+        const userBookings = await bookingsRepository.list(user.id);
         const booking = userBookings.find((item) => item.id === payment.bookingId);
         if (!booking) throw new ApiError(403, 'No puedes confirmar este pago');
 
@@ -44,6 +45,10 @@ export const paymentsService = {
         const updatedBooking = await bookingsRepository.update(booking.id, {
             status: isPaid ? 'confirmed' : 'pending_payment'
         });
+
+        if (isPaid) {
+            await emailService.paid(user, updatedBooking);
+        }
 
         return { booking: updatedBooking, payment: updatedPayment };
     }

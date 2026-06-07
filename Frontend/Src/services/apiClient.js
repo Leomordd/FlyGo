@@ -56,6 +56,7 @@ export const api = {
     saveCart: (items) => apiRequest('/cart', { method: 'PUT', body: { items } }),
     getPackages: () => apiRequest('/packages'),
     getPackage: (packageId) => apiRequest(`/packages/${packageId}`),
+    createTravelPlan: (payload) => apiRequest('/recommendations/plan', { method: 'POST', body: payload }),
     createBooking: (payload) => apiRequest('/bookings', { method: 'POST', body: payload }),
     capturePaypalPayment: (orderId) => apiRequest('/payments/paypal/capture', { method: 'POST', body: { orderId } }),
     getReviews: (packageId) => apiRequest(`/reviews/package/${packageId}`),

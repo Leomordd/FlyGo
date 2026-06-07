@@ -12,7 +12,13 @@ export default function Cart() {
         paymentMethod: 'mercado_pago',
         travelersCount: 1,
         travelDate: '',
-        specialRequests: ''
+        specialRequests: '',
+        cardName: '',
+        cardNumber: '',
+        cardExpiry: '',
+        cardCvv: '',
+        billingEmail: user?.email || '',
+        billingDocument: ''
     });
     const [checkoutMessage, setCheckoutMessage] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -119,6 +125,69 @@ export default function Cart() {
                                     <option value="mercado_pago">Mercado Pago</option>
                                     <option value="paypal">PayPal</option>
                                 </select>
+                            </label>
+                            <div className="checkout-security">
+                                <span>Pago seguro</span>
+                                <p>PayPal y Mercado Pago procesan la tarjeta. FlyGo solo prepara la reserva y no guarda CVV.</p>
+                            </div>
+                            <label>
+                                Email de facturacion
+                                <input
+                                    type="email"
+                                    value={checkout.billingEmail}
+                                    onChange={(event) => setCheckout((current) => ({ ...current, billingEmail: event.target.value }))}
+                                    placeholder="tu@email.com"
+                                />
+                            </label>
+                            <label>
+                                Nombre en la tarjeta
+                                <input
+                                    value={checkout.cardName}
+                                    onChange={(event) => setCheckout((current) => ({ ...current, cardName: event.target.value }))}
+                                    placeholder="Como figura en la tarjeta"
+                                    required
+                                />
+                            </label>
+                            <label>
+                                Numero de tarjeta
+                                <input
+                                    inputMode="numeric"
+                                    maxLength="19"
+                                    value={checkout.cardNumber}
+                                    onChange={(event) => setCheckout((current) => ({ ...current, cardNumber: event.target.value }))}
+                                    placeholder="0000 0000 0000 0000"
+                                    required
+                                />
+                            </label>
+                            <div className="checkout-card-row">
+                                <label>
+                                    Vencimiento
+                                    <input
+                                        value={checkout.cardExpiry}
+                                        onChange={(event) => setCheckout((current) => ({ ...current, cardExpiry: event.target.value }))}
+                                        placeholder="MM/AA"
+                                        required
+                                    />
+                                </label>
+                                <label>
+                                    CVV
+                                    <input
+                                        inputMode="numeric"
+                                        maxLength="4"
+                                        value={checkout.cardCvv}
+                                        onChange={(event) => setCheckout((current) => ({ ...current, cardCvv: event.target.value }))}
+                                        placeholder="123"
+                                        required
+                                    />
+                                </label>
+                            </div>
+                            <label>
+                                Documento / CUIT
+                                <input
+                                    value={checkout.billingDocument}
+                                    onChange={(event) => setCheckout((current) => ({ ...current, billingDocument: event.target.value }))}
+                                    placeholder="Para factura o comprobante"
+                                />
                             </label>
                             <label>
                                 Solicitudes
